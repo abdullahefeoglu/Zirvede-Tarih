@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="ZirvedeTarih.AdminMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="css/maindesign.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="title">
+            <h1 class="pagetitle">Zirvede Tarih</h1>
+            <div class="user">
+                <asp:Label ID="lbl_admin" runat="server"></asp:Label>
+                <asp:LinkButton ID="lbtn_cikis" runat="server" OnClick="lbtn_cikis_Click">Çıkış Yap</asp:LinkButton>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="boxContainer">
+            <ul class="menu">
+                <a href="">
+                    <li>Anasayfa</li>
+                </a>
+                <a href="">
+                    <li>Kategori Ekle</li>
+                </a>
+                <a href="">
+                    <li>Kategori Listele</li>
+                </a>
+                <a href="">
+                    <li>Kullanıcı İşlemleri</li>
+                </a>
+                <a href="">
+                    <li>Yorum İşlemleri</li>
+                </a>
+            </ul>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
