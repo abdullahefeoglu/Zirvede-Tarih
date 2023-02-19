@@ -1,0 +1,60 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="ZirvedeTarih.AdminMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Zirvede Tarih</title>
+    <link href="css/maindesign.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="title">
+            <h1 class="pagetitle">Zirvede Tarih</h1>
+            <div class="user">
+                <asp:Label ID="lbl_admin" runat="server"></asp:Label>
+                <asp:LinkButton ID="lbtn_cikis" runat="server" OnClick="lbtn_cikis_Click">Çıkış Yap</asp:LinkButton>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+        <div class="boxContainer">
+        <a href="Kategori Ekle.aspx">
+            <div class="menu">
+                <li>Kategori Ekle</li>
+            </div>
+        </a>
+        <a href="Kategori Listele.aspx">
+            <div class="menu">
+                <li>Kategori Listele</li>
+            </div>
+        </a>
+        <a href="Makale Ekle.aspx">
+            <div class="menu">
+                <li>Makale Ekle</li>
+            </div>
+        </a>
+            <a href="">
+            <div class="menu">
+                <li>Makale Listele</li>
+            </div>
+        </a>
+        <a href="">
+            <div class="menu">
+                <li>Kullanıcı İşlemleri</li>
+            </div>
+        </a>
+        <a href="">
+            <div class="menu">
+                <li>Yorum İşlemleri</li>
+            </div>
+        </a>
+            </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,166 @@
+﻿*, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Candara;
+}
+
+.title {
+    background-color: #44E3D3;
+    min-height: 40px;
+    padding: 13px;
+    color: white;
+}
+
+.pagetitle {
+    float: left;
+}
+
+.user {
+    float: right;
+    margin-top: 8px;
+    font-size: 15pt;
+}
+
+#lbtn_cikis {
+    text-decoration: none;
+    color: white;
+}
+
+.boxContainer {
+    width: 1300px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.menu {
+    float: left;
+    margin: 20px;
+    margin-left:75px;
+}
+
+    .menu li {
+        list-style-type: none;
+        color: #808080;
+        font-size: 13pt;
+    }
+
+        .menu li:hover {
+            color: #00E3CC;
+        }
+
+.begining {
+    margin-top: 60px;
+    border: 2px solid black;
+    border-bottom: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #00635A;
+    color: white;
+}
+
+.row {
+    margin-left: 400px;
+    font-size: 18pt;
+}
+
+.inputBox {
+    padding: 10px;
+    width: 450px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.formbutton {
+    text-decoration: none;
+    border: 1px solid white;
+    background-color: #00E3CC;
+    padding: 10px 20px;
+    color: white;
+    margin-left: 140px;
+}
+
+.basarili {
+    color: white;
+    background-color: #00ff60;
+    margin-top: 10px;
+    margin-left: 400px;
+    padding: 8px;
+    font-size: 15pt;
+    width: 455px;
+}
+
+.basarisiz {
+    color: white;
+    background-color: #ff0000;
+    margin-top: 10px;
+    margin-left: 400px;
+    padding: 8px;
+    font-size: 15pt;
+    width: 455px;
+}
+
+.tablo {
+    border: 2px solid black;
+    width: 100%;
+    border-top: none;
+}
+
+    .tablo thead tr {
+        background-color: #00E3CC;
+        color: white;
+    }
+
+        .tablo thead tr th {
+            padding: 5px;
+        }
+
+    .tablo tbody tr {
+        border: 1px solid silver;
+    }
+
+        .tablo tbody tr td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 2px solid #00E3CC;
+        }
+
+            .tablo tbody tr td .duzenle {
+                padding: 1px;
+                border: 1px solid black;
+                background-color: #00E3CC;
+                text-decoration: none;
+                color: white;
+                border-radius: 3px;
+            }
+            .tablo tbody tr td .sil {
+                padding: 1px;
+                border: 1px solid black;
+                background-color: #ff0000;
+                text-decoration: none;
+                color:white;
+                border-radius:3px;
+            }
+
+
+.teal-1 {
+    color: #00E3CC;
+}
+
+.teal-2 {
+    color: #32A89C;
+}
+
+.teal-3 {
+    color: #009688;
+}
+
+.teal-4 {
+    color: #44E3D3;
+}
+
+.teal-5 {
+    color: #00635A;
+}
