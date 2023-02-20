@@ -168,5 +168,52 @@ namespace DataAccessLayer
         }
         #endregion
 
+        #region Yönetici
+        public Yonetici AdminGiris(string mail, string sifre)
+        {
+            try
+            {
+                cmd.CommandText = "SELECT COUNT(*) FROM Yoneticiler WHERE Mail=@mail AND Sifre=@sifre";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@mail",mail);
+                cmd.Parameters.AddWithValue("@sifre", sifre);
+                con.Open();
+                int sayi=Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (sayi == 0)
+                {
+                    cmd.CommandText = "SELECT ID, Isim, Soyad, KullaniciAdi, Mail, Sifre, Aktif FROM Yoneticiler WHERE Mail=@mail AND Sifre=@sifre";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@mail", mail);
+                    cmd.Parameters.AddWithValue("@sifre", sifre);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    Yonetici y = new Yonetici();
+                    while (reader.Read())
+                    {
+                        y.ID = reader.GetInt32(0);
+                        y.Isim = reader.GetString(1);
+                        y.Soyad = reader.GetString(2);
+                        y.KullaniciAdi=reader.GetString(3);
+                        y.Mail=reader.GetString(4);
+                        y.Sifre=reader.GetString(5);
+                        y.Aktif = reader.GetBoolean(6);
+
+                    }
+                    return y;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+            finally { con.Close(); }
+        }
+
+        #endregion
+
     }
 }

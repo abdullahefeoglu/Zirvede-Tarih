@@ -12,9 +12,10 @@
                     <tr>
                         <th>ID</th>
                         <th>Isim</th>
+                        <th>Alt Kategori</th>
                         <th>Kategorinin Açıklaması</th>
-                        <th>Beğeni Sayısı</th>
-                        <th>Makale Sayısı</th>
+                        <th>Beğeni</th>
+                        <th>Makale </th>
                         <th>Seçenekler</th>
                     </tr>
                 </thead>
@@ -25,6 +26,7 @@
             <tr>
                 <td><%#Eval("ID") %></td>
                 <td><%#Eval("Isim") %></td>
+                <td></td>
                 <td><%#Eval("kategoriAciklama") %></td>
                 <td><%#Eval("begeniSayisi") %></td>
                 <td><%#Eval("makaleSayisi") %></td>
@@ -36,4 +38,7 @@
         </ItemTemplate>
     </asp:ListView>
         </div>
+    <div class="">
+
+    </div>
 </asp:Content>

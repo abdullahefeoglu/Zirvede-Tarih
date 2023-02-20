@@ -70,6 +70,7 @@
     <Content Include="AdminPanel\Admin Giris.aspx" />
     <Content Include="AdminPanel\css\adminlogincss.css" />
     <Content Include="AdminPanel\css\maindesign.css" />
+    <Content Include="AdminPanel\Default.aspx" />
     <Content Include="AdminPanel\Kategori Duzenle.aspx" />
     <Content Include="AdminPanel\Kategori Ekle.aspx" />
     <Content Include="AdminPanel\Kategori Listele.aspx" />
@@ -90,6 +91,13 @@
     </Compile>
     <Compile Include="AdminPanel\AdminMaster.Master.designer.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPanel\Kategori Duzenle.aspx.cs">
       <DependentUpon>Kategori Duzenle.aspx</DependentUpon>

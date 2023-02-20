@@ -4,5 +4,47 @@
 }
 
 html, body {
-    font-family:Candara;
+    font-family: Candara;
+    background-color: #00E3CC;
+}
+
+.loginBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -300px;
+    margin-top: -130px;
+}
+
+.inputBox {
+    margin-top: 15px;
+    width: 500px;
+    padding: 12px;
+    border-radius: 7px;
+    border: 1px solid black;
+}
+
+.row {
+    margin-left: 130px;
+    font-size: 25pt;
+}
+
+.loginButton {
+    text-decoration: none;
+    padding: 10px 30px;
+    margin-left: 170px;
+    color: black;
+    font-size: 25pt;
+}
+
+.loginButton:hover {
+    color:white;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -120px;
+    margin-top: -250px;
 }

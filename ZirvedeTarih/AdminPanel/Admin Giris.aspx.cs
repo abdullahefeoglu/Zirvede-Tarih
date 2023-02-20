@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,49 @@ namespace ZirvedeTarih.AdminPanel
 {
     public partial class Admin_Giris : System.Web.UI.Page
     {
+        DataModel dm = new DataModel();
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void lbtn_giris_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tb_mail.Text))
+            {
+                if (!string.IsNullOrEmpty(tb_sifre.Text))
+                {
+                    Yonetici y = dm.AdminGiris(tb_mail.Text, tb_sifre.Text);
+                    if (y != null)
+                    {
+                        if (y.Aktif)
+                        {
+                            Session["yonetici"] = y;
+                            Response.Redirect("Default.aspx");
+                        }
+                        else
+                        {
+                            pnl_hata.Visible = true;
+                            lbl_hata.Text = "Hesabınız Aktif Değildir";
+                        }
+                    }
+                    else
+                    {
+                        pnl_hata.Visible = true;
+                        lbl_hata.Text = "Kullanıcı Bulunamadı";
+                    }
+                }
+                else
+                {
+                    pnl_hata.Visible=true;
+                    lbl_hata.Text = "Lütfen Şifrenizi Giriniz";
+                }
+            }
+            else
+            {
+                pnl_hata.Visible=true;
+                lbl_hata.Text = "Lütfen Mailinizi Giriniz";
+            }
         }
     }
 }
