@@ -22,34 +22,46 @@ namespace ZirvedeTarih.AdminPanel
             {
                 if (!string.IsNullOrEmpty(tb_kategoriAciklama.Text.Trim()))
                 {
-                    if (dm.VeriControl("Kategoriler","Isim",tb_isim.Text.Trim()))
+                    if (!string.IsNullOrEmpty(tb_altKategori.Text.Trim()))
                     {
-                        Kategori k = new Kategori();
-                        k.Isim = tb_isim.Text;
-                        k.kategoriAciklama = tb_kategoriAciklama.Text;
-                        k.begeniSayisi = 0;
-                        k.makaleSayisi = 0;
-                        if (dm.KategoriEkle(k))
+                        if (dm.VeriControl("Kategoriler", "Isim", tb_isim.Text.Trim()))
                         {
-                            pnl_basarili.Visible = true;
-                            pnl_basarisiz.Visible = false;
-                            tb_isim.Text = "";
-                            tb_kategoriAciklama.Text = "";
+                            Kategori k = new Kategori();
+                            k.Isim = tb_isim.Text;
+                            k.Altkategori_ID = k.Altkategori_ID;
+                            k.kategoriAciklama = tb_kategoriAciklama.Text;
+                            k.begeniSayisi = 0;
+                            k.makaleSayisi = 0;
+                            if (dm.KategoriEkle(k))
+                            {
+                                pnl_basarili.Visible = true;
+                                pnl_basarisiz.Visible = false;
+                                tb_isim.Text = "";
+                                tb_kategoriAciklama.Text = "";
+                                tb_altKategori.Text = "";
 
+                            }
+                            else
+                            {
+                                pnl_basarili.Visible = false;
+                                pnl_basarisiz.Visible = true;
+                                lbl_mesaj.Text = "Kategori Ekleme İşlemi Başarısız";
+                            }
                         }
                         else
                         {
                             pnl_basarili.Visible = false;
                             pnl_basarisiz.Visible = true;
-                            lbl_mesaj.Text = "Kategori Ekleme İşlemi Başarısız";
+                            lbl_mesaj.Text = "Kategori Daha Önce Eklenmiş";
                         }
                     }
                     else
                     {
                         pnl_basarili.Visible = false;
                         pnl_basarisiz.Visible = true;
-                        lbl_mesaj.Text = "Kategori Daha Önce Eklenmiş";
+                        lbl_mesaj.Text = "Alt Kategori Boş Bırakılamaz";
                     }
+
                 }
                 else
                 {

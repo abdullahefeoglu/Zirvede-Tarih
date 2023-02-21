@@ -21,8 +21,7 @@
 
             <asp:Panel ID="pnl_hata" runat="server" CssClass="hata" Visible="false">
                 <asp:Label ID="lbl_hata" runat="server"></asp:Label>
-            </asp:Panel>
-            <br /><br />
+            </asp:Panel><br />
             <asp:LinkButton ID="lbtn_giris" runat="server" Text="Giriş Yap" CssClass="loginButton" OnClick="lbtn_giris_Click"></asp:LinkButton>
         </div>
     </form>

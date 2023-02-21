@@ -48,3 +48,9 @@ html, body {
     margin-left: -120px;
     margin-top: -250px;
 }
+
+.hata{
+    font-size:15pt;
+    padding:5px;
+    margin-left:160px;
+}

@@ -24,6 +24,15 @@ namespace ZirvedeTarih.AdminPanel
         protected global::System.Web.UI.WebControls.TextBox tb_isim;
 
         /// <summary>
+        /// tb_altKategori control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_altKategori;
+
+        /// <summary>
         /// tb_kategoriAciklama control.
         /// </summary>
         /// <remarks>

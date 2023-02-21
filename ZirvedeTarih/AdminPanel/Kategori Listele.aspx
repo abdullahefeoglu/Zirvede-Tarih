@@ -15,7 +15,7 @@
                         <th>Alt Kategori</th>
                         <th>Kategorinin Açıklaması</th>
                         <th>Beğeni</th>
-                        <th>Makale </th>
+                        <th>Makale</th>
                         <th>Seçenekler</th>
                     </tr>
                 </thead>
@@ -26,7 +26,7 @@
             <tr>
                 <td><%#Eval("ID") %></td>
                 <td><%#Eval("Isim") %></td>
-                <td></td>
+                <td><%#Eval("altKategoriler") %></td>
                 <td><%#Eval("kategoriAciklama") %></td>
                 <td><%#Eval("begeniSayisi") %></td>
                 <td><%#Eval("makaleSayisi") %></td>

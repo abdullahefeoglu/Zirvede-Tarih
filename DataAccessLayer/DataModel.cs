@@ -22,9 +22,10 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "INSERT INTO Kategoriler(Isim,kategoriAciklama,begeniSayisi,makaleSayisi) VALUES(@isim,@kategoriaciklama,@begenisayisi,@makalesayisi)";
+                cmd.CommandText = "INSERT INTO Kategoriler(Isim,AltKategori_ID,kategoriAciklama,begeniSayisi,makaleSayisi) VALUES(@isim,@altkategori_ID,@kategoriaciklama,@begenisayisi,@makalesayisi)";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@isim", kat.Isim);
+                cmd.Parameters.AddWithValue("@altkategori_ID", kat.Altkategori_ID);
                 cmd.Parameters.AddWithValue("@kategoriaciklama", kat.kategoriAciklama);
                 cmd.Parameters.AddWithValue("@begeniSayisi",kat.begeniSayisi);
                 cmd.Parameters.AddWithValue("@makalesayisi",kat.makaleSayisi);
@@ -41,7 +42,7 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "UPDATE Kategoriler SET Isim = @isim, kategoriAciklama=@kategoriaciklama WHERE = ID=@id";
+                cmd.CommandText = "UPDATE Kategoriler SET Isim = @isim, altKategori=@altkategori, kategoriAciklama=@kategoriaciklama WHERE = ID=@id";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", kat.ID);
                 cmd.Parameters.AddWithValue("@isim", kat.Isim);
@@ -83,9 +84,10 @@ namespace DataAccessLayer
                     Kategori k = new Kategori();
                     k.ID = reader.GetInt32(0);
                     k.Isim=reader.GetString(1);
-                    k.kategoriAciklama = !reader.IsDBNull(2) ? reader.GetString(2) : "Açıklama Girilmemiş";
-                    k.begeniSayisi =reader.GetInt32(3);
-                    k.makaleSayisi = reader.GetInt32(4);
+                    k.altKategori = reader.GetString(2);
+                    k.kategoriAciklama = !reader.IsDBNull(3) ? reader.GetString(2) : "Açıklama Girilmemiş";
+                    k.begeniSayisi =reader.GetInt32(4);
+                    k.makaleSayisi = reader.GetInt32(5);
                     kategoriler.Add(k);
 
                 }
@@ -112,7 +114,8 @@ namespace DataAccessLayer
                 {
                     k.ID = reader.GetInt32(0);
                     k.Isim = reader.GetString(1);
-                    k.kategoriAciklama=reader.GetString(2);
+                    k.altKategori = reader.GetString(2);
+                    k.kategoriAciklama=reader.GetString(3);
                     
                 }
                 return k;
@@ -128,10 +131,11 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "UPDATE Kategoriler SET Isim=@isim , kategoriAciklama=@kategoriaciklama WHERE ID=@id";
+                cmd.CommandText = "UPDATE Kategoriler SET Isim=@isim , altKategori=@altkategori , kategoriAciklama=@kategoriaciklama WHERE ID=@id";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", kat.ID);
-                cmd.Parameters.AddWithValue("isim", kat.Isim);
+                cmd.Parameters.AddWithValue("@isim", kat.Isim);
+                cmd.Parameters.AddWithValue("@altkategori", kat.altKategori);
                 cmd.Parameters.AddWithValue("@kategoriaciklama", kat.kategoriAciklama);
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -180,7 +184,7 @@ namespace DataAccessLayer
                 con.Open();
                 int sayi=Convert.ToInt32(cmd.ExecuteScalar());
 
-                if (sayi == 0)
+                if (sayi > 0)
                 {
                     cmd.CommandText = "SELECT ID, Isim, Soyad, KullaniciAdi, Mail, Sifre, Aktif FROM Yoneticiler WHERE Mail=@mail AND Sifre=@sifre";
                     cmd.Parameters.Clear();
