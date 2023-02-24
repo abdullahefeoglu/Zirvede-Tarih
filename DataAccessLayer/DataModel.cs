@@ -22,15 +22,15 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "INSERT INTO Kategoriler(Isim,AltKategori_ID,kategoriAciklama,begeniSayisi,makaleSayisi) VALUES(@isim,@altkategori_ID,@kategoriaciklama,@begenisayisi,@makalesayisi)";
+                cmd.CommandText = "INSERT INTO Kategoriler(Isim,altKategori,kategoriAciklama,begeniSayisi,makaleSayisi) VALUES(@isim,@altkategori,@kategoriaciklama,@begenisayisi,@makalesayisi)";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@isim", kat.Isim);
-                cmd.Parameters.AddWithValue("@altkategori_ID", kat.Altkategori_ID);
+                cmd.Parameters.AddWithValue("@altkategori", kat.altKategori);
                 cmd.Parameters.AddWithValue("@kategoriaciklama", kat.kategoriAciklama);
-                cmd.Parameters.AddWithValue("@begeniSayisi",kat.begeniSayisi);
-                cmd.Parameters.AddWithValue("@makalesayisi",kat.makaleSayisi);
+                cmd.Parameters.AddWithValue("@begeniSayisi", kat.begeniSayisi);
+                cmd.Parameters.AddWithValue("@makalesayisi", kat.makaleSayisi);
                 con.Open();
-                cmd.ExecuteNonQuery();
+                cmd.ExecuteReader();
                 return true;
             }
             catch
@@ -42,10 +42,11 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "UPDATE Kategoriler SET Isim = @isim, altKategori=@altkategori, kategoriAciklama=@kategoriaciklama WHERE = ID=@id";
+                cmd.CommandText = "UPDATE Kategoriler SET Isim = @isim, Altkategori_ID=@altkategori_ID, kategoriAciklama=@kategoriaciklama WHERE = ID=@id";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", kat.ID);
                 cmd.Parameters.AddWithValue("@isim", kat.Isim);
+                cmd.Parameters.AddWithValue("@altkategori_ID", kat.Altkategori_ID);
                 cmd.Parameters.AddWithValue("@kategoriaciklama", kat.kategoriAciklama);
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -83,10 +84,10 @@ namespace DataAccessLayer
                 {
                     Kategori k = new Kategori();
                     k.ID = reader.GetInt32(0);
-                    k.Isim=reader.GetString(1);
+                    k.Isim = reader.GetString(1);
                     k.altKategori = reader.GetString(2);
                     k.kategoriAciklama = !reader.IsDBNull(3) ? reader.GetString(2) : "Açıklama Girilmemiş";
-                    k.begeniSayisi =reader.GetInt32(4);
+                    k.begeniSayisi = reader.GetInt32(4);
                     k.makaleSayisi = reader.GetInt32(5);
                     kategoriler.Add(k);
 
@@ -115,8 +116,8 @@ namespace DataAccessLayer
                     k.ID = reader.GetInt32(0);
                     k.Isim = reader.GetString(1);
                     k.altKategori = reader.GetString(2);
-                    k.kategoriAciklama=reader.GetString(3);
-                    
+                    k.kategoriAciklama = reader.GetString(3);
+
                 }
                 return k;
             }
@@ -139,6 +140,35 @@ namespace DataAccessLayer
                 cmd.Parameters.AddWithValue("@kategoriaciklama", kat.kategoriAciklama);
                 con.Open();
                 cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally { con.Close(); }
+        }
+        #endregion
+
+        #region Makale İşlemleri
+        public bool MakaleEkle(Makale mak)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO(Yonetici_ID, Kategori_ID, Baslik, Ozet, Icerik, Resim, GoruntulenmeSayisi, EklemeTarihi, BegeniSayisi, Yayinda) VALUES(@yonetici_ID, @kategori_ID, @baslik, @ozet, @icerik, @resim, @goruntulenmesayisi, @begenisayisi, @eklemetarihi, @yayinda)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@yonetici_ID", mak.Yonetici_ID);
+                cmd.Parameters.AddWithValue("@kategori_ID", mak.Kategori_ID);
+                cmd.Parameters.AddWithValue("@baslik", mak.Baslik);
+                cmd.Parameters.AddWithValue("@ozet", mak.Ozet);
+                cmd.Parameters.AddWithValue("@icerik", mak.Icerik);
+                cmd.Parameters.AddWithValue("@resim", mak.Resim);
+                cmd.Parameters.AddWithValue("@goruntulenmesayisi", mak.GoruntulemeSayisi);
+                cmd.Parameters.AddWithValue("@eklemetarihi", mak.EklemeTarihi);
+                cmd.Parameters.AddWithValue("@begenisayisi", mak.BegeniSayisi);
+                cmd.Parameters.AddWithValue("@yayinda", mak.Yayinda);
+                con.Open();
+                cmd.ExecuteReader();
                 return true;
             }
             catch
@@ -179,10 +209,10 @@ namespace DataAccessLayer
             {
                 cmd.CommandText = "SELECT COUNT(*) FROM Yoneticiler WHERE Mail=@mail AND Sifre=@sifre";
                 cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@mail",mail);
+                cmd.Parameters.AddWithValue("@mail", mail);
                 cmd.Parameters.AddWithValue("@sifre", sifre);
                 con.Open();
-                int sayi=Convert.ToInt32(cmd.ExecuteScalar());
+                int sayi = Convert.ToInt32(cmd.ExecuteScalar());
 
                 if (sayi > 0)
                 {
@@ -197,9 +227,9 @@ namespace DataAccessLayer
                         y.ID = reader.GetInt32(0);
                         y.Isim = reader.GetString(1);
                         y.Soyad = reader.GetString(2);
-                        y.KullaniciAdi=reader.GetString(3);
-                        y.Mail=reader.GetString(4);
-                        y.Sifre=reader.GetString(5);
+                        y.KullaniciAdi = reader.GetString(3);
+                        y.Mail = reader.GetString(4);
+                        y.Sifre = reader.GetString(5);
                         y.Aktif = reader.GetBoolean(6);
 
                     }
@@ -219,5 +249,69 @@ namespace DataAccessLayer
 
         #endregion
 
+        #region Uyeler
+        public bool UyeBanla(int id)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Uyeler SET Aktif = 0 WHERE ID =@id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally { con.Close(); }
+        }
+        public bool UyeBanKaldir(int id)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Uyeler SET Aktif = 1 WHERE ID =@id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally { con.Close(); }
+        }
+        public List<Uye> UyeListele()
+        {
+            List<Uye> uyeler = new List<Uye>();
+            try
+            {
+                cmd.CommandText = "SELECT * FROM Uyeler";
+                cmd.Parameters.Clear();
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Uye u = new Uye();
+                    u.ID=reader.GetInt32(0);
+                    u.Isim = reader.GetString(1);
+                    u.KullaniciAdi =reader.GetString(2);
+                    u.Sifre = reader.GetString(3);
+                    u.KatılımTarihi = reader.GetDateTime(4);
+                    u.YorumSayisi = reader.GetInt32(5);
+                    u.Aktif = reader.GetBoolean(6);
+                }
+                return uyeler;
+            }
+            catch
+            {
+                return null;
+            }
+            finally { con.Close(); }
+        }
+        #endregion
     }
 }

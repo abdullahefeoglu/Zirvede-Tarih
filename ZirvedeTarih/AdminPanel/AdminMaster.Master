@@ -40,7 +40,7 @@
                 <li>Makale Listele</li>
             </div>
         </a>
-        <a href="">
+        <a href="UyeListele.aspx">
             <div class="menu">
                 <li>Kullanıcı İşlemleri</li>
             </div>

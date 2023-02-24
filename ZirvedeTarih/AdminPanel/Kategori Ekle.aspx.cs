@@ -28,7 +28,7 @@ namespace ZirvedeTarih.AdminPanel
                         {
                             Kategori k = new Kategori();
                             k.Isim = tb_isim.Text;
-                            k.Altkategori_ID = k.Altkategori_ID;
+                            k.altKategori = tb_altKategori.Text;
                             k.kategoriAciklama = tb_kategoriAciklama.Text;
                             k.begeniSayisi = 0;
                             k.makaleSayisi = 0;

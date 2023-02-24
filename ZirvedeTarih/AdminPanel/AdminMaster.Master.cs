@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,12 +12,21 @@ namespace ZirvedeTarih
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["yonetici"] !=null)
+            {
+                Yonetici y = (Yonetici)Session["yonetici"];
+                lbl_admin.Text = y.KullaniciAdi + " (admin) ";
+            }
+            else
+            {
+                Response.Redirect("Admin Giris.aspx");
+            }
         }
 
         protected void lbtn_cikis_Click(object sender, EventArgs e)
         {
-
+            Session["yonetici"] = null;
+            Response.Redirect("Admin Giris.aspx");
         }
     }
 }
