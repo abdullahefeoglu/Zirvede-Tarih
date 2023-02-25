@@ -13,18 +13,18 @@
         <a href='PasifUyeler.aspx?uyeid<%#Eval("ID") %>' class="pasif">Pasif Üyeler</a>
         <br />
         <br />
+        <br />
         <asp:ListView ID="lv_uyeler" runat="server" OnItemCommand="lv_uyeler_ItemCommand">
             <LayoutTemplate>
-                <table class="tablo" cellpadding="0" cellspacing="0">
+                <table class="tablo" cellpadding="0" cellspacing="0" style="border: 2px solid black;">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Isim</th>
                             <th>KullaniciAdi</th>
-                            <th>KatılımTarihi</th>  
+                            <th>KatılımTarihi</th>
                             <th>YorumSayisi</th>
-                            <th>Aktif</th>
-                            <th>Seçenekler</th>
+                            <th>Durum</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,9 +40,6 @@
                     <td><%#Eval("KatılımTarihi") %></td>
                     <td><%#Eval("YorumSayisi") %></td>
                     <td><%#Eval("Aktif") %></td>
-                    <td>
-                        <asp:LinkButton ID="lbtn_banla" runat="server" CssClass="banla" CommandArgument='<%#Eval("ID") %>' CommandName="banla">Banla</asp:LinkButton>
-                    </td>
                 </tr>
             </ItemTemplate>
         </asp:ListView>

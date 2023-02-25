@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminPanel/AdminMaster.Master" AutoEventWireup="true" CodeBehind="PasifUyeler.aspx.cs" Inherits="ZirvedeTarih.AdminPanel.PasifUyeler" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="boxContainer">
+    <div class="boxContainer">
         <div class="begining">
             <h1>Üyelerin Listesi</h1>
         </div>
@@ -12,9 +13,10 @@
         <a href='PasifUyeler.aspx?uyeid<%#Eval("ID") %>' class="pasif">Pasif Üyeler</a>
         <br />
         <br />
+        <br />
         <asp:ListView ID="lv_uyeler" runat="server" OnItemCommand="lv_uyeler_ItemCommand">
             <LayoutTemplate>
-                <table class="tablo" cellpadding="0" cellspacing="0">
+                <table class="tablo" cellpadding="0" cellspacing="0" style="border: 2px solid black;">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -22,7 +24,7 @@
                             <th>KullaniciAdi</th>
                             <th>KatılımTarihi</th>
                             <th>YorumSayisi</th>
-                            <th>Aktif</th>
+                            <th>Durum</th>
                             <th>Seçenekler</th>
                         </tr>
                     </thead>

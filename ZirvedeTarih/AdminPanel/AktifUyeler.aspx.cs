@@ -13,7 +13,7 @@ namespace ZirvedeTarih.AdminPanel
         DataModel dm = new DataModel();
         protected void Page_Load(object sender, EventArgs e)
         {
-            lv_uyeler.DataSource = dm.UyeListele();
+            lv_uyeler.DataSource = dm.UyeListele(1);
             lv_uyeler.DataBind();
         }
 
@@ -24,7 +24,7 @@ namespace ZirvedeTarih.AdminPanel
                 int id = Convert.ToInt32(e.CommandArgument);
                 dm.UyeBanla(id);
             }
-            lv_uyeler.DataSource = dm.UyeListele();
+            lv_uyeler.DataSource = dm.UyeListele(1);
             lv_uyeler.DataBind();
         }
     }

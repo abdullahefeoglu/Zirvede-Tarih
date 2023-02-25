@@ -284,6 +284,37 @@ namespace DataAccessLayer
             }
             finally { con.Close(); }
         }
+        public List<Uye> UyeListele(int id)
+        {
+            List<Uye> uyeler = new List<Uye>();
+            try
+            {
+                cmd.CommandText = "SELECT * FROM Uyeler WHERE Aktif=@id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Uye u = new Uye();
+                    u.ID=reader.GetInt32(0);
+                    u.Isim = reader.GetString(1);
+                    u.KullaniciAdi =reader.GetString(2);
+                    u.Sifre = reader.GetString(3);
+                    u.KatılımTarihi = reader.GetDateTime(4);
+                    u.YorumSayisi = reader.GetInt32(5);
+                    u.Aktif = reader.GetBoolean(6) ? "<label style='color:green'>Aktif</label>" : "<label style='color:gray'>Pasif</label>";
+                    uyeler.Add(u);
+                }
+                return uyeler;
+            }
+            catch
+            {
+                return null;
+            }
+            finally { con.Close(); }
+        }
+
         public List<Uye> UyeListele()
         {
             List<Uye> uyeler = new List<Uye>();
@@ -296,13 +327,14 @@ namespace DataAccessLayer
                 while (reader.Read())
                 {
                     Uye u = new Uye();
-                    u.ID=reader.GetInt32(0);
+                    u.ID = reader.GetInt32(0);
                     u.Isim = reader.GetString(1);
-                    u.KullaniciAdi =reader.GetString(2);
+                    u.KullaniciAdi = reader.GetString(2);
                     u.Sifre = reader.GetString(3);
                     u.KatılımTarihi = reader.GetDateTime(4);
                     u.YorumSayisi = reader.GetInt32(5);
-                    u.Aktif = reader.GetBoolean(6);
+                    u.Aktif = reader.GetBoolean(6) ? "<label style='color:green'>Aktif</label>" : "<label style='color:gray'>Pasif</label>";
+                    uyeler.Add(u);
                 }
                 return uyeler;
             }

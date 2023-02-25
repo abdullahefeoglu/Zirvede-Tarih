@@ -19,11 +19,6 @@ namespace ZirvedeTarih
 
         protected void lv_uyeler_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            if (e.CommandName =="banla")
-            {
-                int id = Convert.ToInt32(e.CommandArgument);
-                dm.UyeBanla(id);
-            }
             lv_uyeler.DataSource = dm.UyeListele();
             lv_uyeler.DataBind();
         }
