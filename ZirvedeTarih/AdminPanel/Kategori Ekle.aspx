@@ -13,11 +13,6 @@
         </div>
         <br />
         <div class="row">
-            <label>Alt Kategori</label><br />
-            <asp:TextBox ID="tb_altKategori" runat="server" CssClass="inputBox"></asp:TextBox>
-        </div>
-        <br />
-        <div class="row">
             <label>Kategorinin Açıklaması</label><br />
             <asp:TextBox ID="tb_kategoriAciklama" runat="server" CssClass="inputBox"></asp:TextBox>
         </div>

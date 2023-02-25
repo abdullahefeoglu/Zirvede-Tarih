@@ -495,6 +495,8 @@
     <Content Include="AdminPanel\Kategori Ekle.aspx" />
     <Content Include="AdminPanel\Kategori Listele.aspx" />
     <Content Include="AdminPanel\Makale Ekle.aspx" />
+    <Content Include="AdminPanel\MakaleDuzenle.aspx" />
+    <Content Include="AdminPanel\MakaleListele.aspx" />
     <Content Include="AdminPanel\PasifUyeler.aspx" />
     <Content Include="AdminPanel\UyeListele.aspx" />
     <Content Include="Web.config" />
@@ -555,6 +557,20 @@
     </Compile>
     <Compile Include="AdminPanel\Makale Ekle.aspx.designer.cs">
       <DependentUpon>Makale Ekle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\MakaleDuzenle.aspx.cs">
+      <DependentUpon>MakaleDuzenle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\MakaleDuzenle.aspx.designer.cs">
+      <DependentUpon>MakaleDuzenle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\MakaleListele.aspx.cs">
+      <DependentUpon>MakaleListele.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\MakaleListele.aspx.designer.cs">
+      <DependentUpon>MakaleListele.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPanel\PasifUyeler.aspx.cs">
       <DependentUpon>PasifUyeler.aspx</DependentUpon>

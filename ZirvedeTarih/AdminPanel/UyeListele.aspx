@@ -39,7 +39,7 @@
                     <td><%#Eval("KullaniciAdi") %></td>
                     <td><%#Eval("KatılımTarihi") %></td>
                     <td><%#Eval("YorumSayisi") %></td>
-                    <td><%#Eval("Aktif") %></td>
+                    <td><%#Eval("AktifStr") %></td>
                 </tr>
             </ItemTemplate>
         </asp:ListView>

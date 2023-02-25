@@ -22,13 +22,11 @@ namespace ZirvedeTarih.AdminPanel
             {
                 if (!string.IsNullOrEmpty(tb_kategoriAciklama.Text.Trim()))
                 {
-                    if (!string.IsNullOrEmpty(tb_altKategori.Text.Trim()))
-                    {
                         if (dm.VeriControl("Kategoriler", "Isim", tb_isim.Text.Trim()))
                         {
                             Kategori k = new Kategori();
+                            AltKategori ak = new AltKategori();
                             k.Isim = tb_isim.Text;
-                            k.altKategori = tb_altKategori.Text;
                             k.kategoriAciklama = tb_kategoriAciklama.Text;
                             k.begeniSayisi = 0;
                             k.makaleSayisi = 0;
@@ -38,8 +36,6 @@ namespace ZirvedeTarih.AdminPanel
                                 pnl_basarisiz.Visible = false;
                                 tb_isim.Text = "";
                                 tb_kategoriAciklama.Text = "";
-                                tb_altKategori.Text = "";
-
                             }
                             else
                             {
@@ -54,14 +50,6 @@ namespace ZirvedeTarih.AdminPanel
                             pnl_basarisiz.Visible = true;
                             lbl_mesaj.Text = "Kategori Daha Önce Eklenmiş";
                         }
-                    }
-                    else
-                    {
-                        pnl_basarili.Visible = false;
-                        pnl_basarisiz.Visible = true;
-                        lbl_mesaj.Text = "Alt Kategori Boş Bırakılamaz";
-                    }
-
                 }
                 else
                 {

@@ -16,7 +16,7 @@
                             <th>ID</th>
                             <th>Isim</th>
                             <th>Kategorinin Açıklaması</th>
-                            <th>Beğeni</th>
+                            <th>Beğeni</th> 
                             <th>Makale</th>
                             <th>Seçenekler</th>
                         </tr>

@@ -40,7 +40,7 @@
                     <td><%#Eval("KullaniciAdi") %></td>
                     <td><%#Eval("KatılımTarihi") %></td>
                     <td><%#Eval("YorumSayisi") %></td>
-                    <td><%#Eval("Aktif") %></td>
+                    <td><%#Eval("AktifStr") %></td>
                     <td>
                         <asp:LinkButton ID="lbtn_bankaldir" runat="server" CssClass="bankaldir" CommandArgument='<%#Eval("ID") %>' CommandName="bankaldir">Aktif Et</asp:LinkButton>
                     </td>

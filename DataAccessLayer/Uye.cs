@@ -15,5 +15,6 @@ namespace DataAccessLayer
         public DateTime KatılımTarihi { get; set; }
         public int YorumSayisi { get; set; }
         public bool Aktif { get; set; }
+        public string AktifStr { get; set; }
     }
 }

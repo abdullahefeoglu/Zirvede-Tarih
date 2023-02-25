@@ -10,5 +10,7 @@ namespace DataAccessLayer
     {
         public int ID { get; set; }
         public string Isim { get; set; }
+        public int Kategoriler_ID { get; set; }
+        public string Kategori { get; set; }
     }
 }

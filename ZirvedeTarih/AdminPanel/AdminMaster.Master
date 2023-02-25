@@ -35,7 +35,7 @@
                 <li>Makale Ekle</li>
             </div>
         </a>
-            <a href="">
+            <a href="MakaleListele.aspx">
             <div class="menu">
                 <li>Makale Listele</li>
             </div>
