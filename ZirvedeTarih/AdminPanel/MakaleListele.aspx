@@ -4,11 +4,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="boxContainer">
         <div class="begining">
-            Makalelerin Listesi
+            <h1>Makalelerin Listesi</h1>
         </div>
         <asp:ListView ID="lv_makaleler" runat="server" OnItemCommand="lv_makaleler_ItemCommand">
             <LayoutTemplate>
-                <table>
+                <table class="tablo" cellpadding="0" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Resim</th>
@@ -27,7 +27,7 @@
             </LayoutTemplate>
             <ItemTemplate>
                 <tr>
-                    <td></td<img src="../MakaleResimleri/<%# Eval("Resim") %>" width="50" />
+                    <td></td<img src="../MakaleResimleri/<%# Eval("Resim") %>"  />
                     <td><%#Eval("ID") %></td>
                     <td><%#Eval("Kategori") %></td>
                     <td><%#Eval("Baslik") %></td>

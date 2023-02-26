@@ -499,6 +499,8 @@
     <Content Include="AdminPanel\MakaleListele.aspx" />
     <Content Include="AdminPanel\PasifUyeler.aspx" />
     <Content Include="AdminPanel\UyeListele.aspx" />
+    <Content Include="MakaleResimleri\bg1.jpg" />
+    <Content Include="MakaleResimleri\bg2.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -633,7 +635,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminPanel\Assets\photo\" />
-    <Folder Include="MakaleResimleri\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">

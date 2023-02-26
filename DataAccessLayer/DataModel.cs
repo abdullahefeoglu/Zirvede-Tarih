@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -191,6 +192,117 @@ namespace DataAccessLayer
                 return false;
             }
             finally { con.Close(); }
+        }
+
+        public List<Makale> MakaleListele()
+        {
+            try
+            {
+                List<Makale> Makaleler = new List<Makale>();
+                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID";
+                cmd.Parameters.Clear();
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Makale m = new Makale();
+                    m.ID = reader.GetInt32(0);
+                    m.Kategori_ID = reader.GetInt32(1);
+                    m.Kategori = reader.GetString(2);
+                    m.Yonetici_ID = reader.GetInt32(3);
+                    m.Yonetici = reader.GetString(4);
+                    m.Baslik = reader.GetString(5);
+                    m.Ozet = reader.GetString(6);
+                    m.Icerik = reader.GetString(7);
+                    m.Resim = reader.GetString(8);
+                    m.GoruntulemeSayisi = reader.GetInt32(9);
+                    m.EklemeTarihi = reader.GetDateTime(10);
+                    m.EklemeTarihStr = reader.GetDateTime(10).ToShortDateString();
+                    m.BegeniSayisi = reader.GetInt32(11);
+                    m.Yayinda = reader.GetBoolean(12);
+                    m.YayindaStr = reader.GetBoolean(12) ? "<label style='color:green'>Aktif</label>" : "<label style='color:gray'>Pasif</label>";
+                    Makaleler.Add(m);
+                }
+                return Makaleler;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+  
+
+        public List<Makale> MakaleListele(int kid, bool durum)
+        {
+            try
+            {
+                List<Makale> Makaleler = new List<Makale>();
+                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.Kategori_ID=@kategori_ID AND M.Yayinda=@durum";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@durum", durum);
+                cmd.Parameters.AddWithValue("@kategori_ID", kid);
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Makale m = new Makale();
+                    m.ID = reader.GetInt32(0);
+                    m.Kategori_ID = reader.GetInt32(1);
+                    m.Kategori = reader.GetString(2);
+                    m.Yonetici_ID = reader.GetInt32(3);
+                    m.Yonetici = reader.GetString(4);
+                    m.Baslik = reader.GetString(5);
+                    m.Ozet = reader.GetString(6);
+                    m.Icerik = reader.GetString(7);
+                    m.Resim = reader.GetString(8);
+                    m.GoruntulemeSayisi = reader.GetInt32(9);
+                    m.EklemeTarihi = reader.GetDateTime(10);
+                    m.EklemeTarihStr = reader.GetDateTime(10).ToShortDateString();
+                    m.BegeniSayisi = reader.GetInt32(11);
+                    m.Yayinda = reader.GetBoolean(12);
+                    m.YayindaStr = reader.GetBoolean(12) ? "<label style='color:green'>Aktif</label>" : "<label style='color:gray'>Pasif</label>";
+                    Makaleler.Add(m);
+                }
+                return Makaleler;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public bool MakaleSil(int id)
+        {
+            try
+            {
+                cmd.CommandText = "DELETE Yorumlar WHERE Makale_ID = @id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "DELETE Makaleler WHERE ID = @id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
         }
         #endregion
 
