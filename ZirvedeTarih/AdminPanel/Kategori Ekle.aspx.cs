@@ -25,7 +25,6 @@ namespace ZirvedeTarih.AdminPanel
                         if (dm.VeriControl("Kategoriler", "Isim", tb_isim.Text.Trim()))
                         {
                             Kategori k = new Kategori();
-                            AltKategori ak = new AltKategori();
                             k.Isim = tb_isim.Text;
                             k.kategoriAciklama = tb_kategoriAciklama.Text;
                             k.begeniSayisi = 0;

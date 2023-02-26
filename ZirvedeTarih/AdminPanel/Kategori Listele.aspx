@@ -15,6 +15,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Isim</th>
+                            <th>Alt Kategori</th>
                             <th>Kategorinin Açıklaması</th>
                             <th>Beğeni</th> 
                             <th>Makale</th>
@@ -29,6 +30,7 @@
             <ItemTemplate>
                 <tr>
                     <td><%#Eval("ID") %></td>
+                    <td><%#Eval("Isim") %></td>
                     <td><%#Eval("Isim") %></td>
                     <td><%#Eval("kategoriAciklama") %></td>
                     <td><%#Eval("begeniSayisi") %></td>
