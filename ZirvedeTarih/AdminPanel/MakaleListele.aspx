@@ -13,8 +13,8 @@
                         <tr>
                             <th>Resim</th>
                             <th>ID</th>
-                            <th>Başlık</th>
                             <th>Kategori</th>
+                            <th>Başlık</th>
                             <th>Yonetici</th>
                             <th>Görüntülenme Sayısı</th>
                             <th>Ekleme Tarihi</th>

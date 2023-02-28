@@ -16,7 +16,6 @@ namespace DataAccessLayer
         public string  Baslik { get; set; }
         public string Ozet { get; set; }
         public string Icerik { get; set; }
-        public string Bolum  { get; set; }
         public string Resim { get; set; }
         public int GoruntulemeSayisi { get; set; }
         public DateTime EklemeTarihi { get; set; }
