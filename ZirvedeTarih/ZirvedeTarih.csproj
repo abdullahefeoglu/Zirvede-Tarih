@@ -497,8 +497,11 @@
     <Content Include="AdminPanel\Makale Ekle.aspx" />
     <Content Include="AdminPanel\MakaleDuzenle.aspx" />
     <Content Include="AdminPanel\MakaleListele.aspx" />
+    <Content Include="AdminPanel\OnaylananYorumlar.aspx" />
     <Content Include="AdminPanel\PasifUyeler.aspx" />
+    <Content Include="AdminPanel\ReddedilenYorumlar.aspx" />
     <Content Include="AdminPanel\UyeListele.aspx" />
+    <Content Include="AdminPanel\YorumListele.aspx" />
     <Content Include="MakaleResimleri\bg1.jpg" />
     <Content Include="MakaleResimleri\bg2.png" />
     <Content Include="Web.config" />
@@ -574,12 +577,33 @@
     <Compile Include="AdminPanel\MakaleListele.aspx.designer.cs">
       <DependentUpon>MakaleListele.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminPanel\OnaylananYorumlar.aspx.cs">
+      <DependentUpon>OnaylananYorumlar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\OnaylananYorumlar.aspx.designer.cs">
+      <DependentUpon>OnaylananYorumlar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminPanel\PasifUyeler.aspx.cs">
       <DependentUpon>PasifUyeler.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdminPanel\PasifUyeler.aspx.designer.cs">
       <DependentUpon>PasifUyeler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\ReddedilenYorumlar.aspx.cs">
+      <DependentUpon>ReddedilenYorumlar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\ReddedilenYorumlar.aspx.designer.cs">
+      <DependentUpon>ReddedilenYorumlar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\YorumListele.aspx.cs">
+      <DependentUpon>YorumListele.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\YorumListele.aspx.designer.cs">
+      <DependentUpon>YorumListele.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AdminPanel\UyeListele.aspx.cs">

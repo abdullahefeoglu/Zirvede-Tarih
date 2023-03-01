@@ -14,9 +14,11 @@ namespace DataAccessLayer
         public int Makale_ID { get; set; }
         public string Makale { get; set; }
         public int Yonetici_ID { get; set; }
+        public string  Yonetici { get; set; }
         public DateTime YorumTarih { get; set; }
         public int YorumBegeni { get; set; }
         public string YorumIcerik { get; set; }
         public bool YorumOnay { get; set; }
+        public string YorumOnayStr { get; set; }
     }
 }

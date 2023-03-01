@@ -521,5 +521,84 @@ namespace DataAccessLayer
             finally { con.Close(); }
         }
         #endregion
+        #region Yorumlar
+        public List<Yorum> YorumListele()
+        {
+            List<Yorum> yorumlar = new List<Yorum>();
+            try
+            {
+                cmd.CommandText = "SELECT Y.ID, Y.Makale_ID, M.Baslik, Y.Yonetici_ID, YY.KullaniciAdi, Y.Uye_ID, U.KullaniciAdi, U.Isim +' '+ U.Soyisim, Y.YorumTarih, Y.YorumBegeni, Y.YorumIcerik, Y.YorumOnay FROM Yorumlar AS Y JOIN Makaleler AS M ON Y.Makale_ID = M.ID JOIN Yoneticiler AS YY ON Y.Yonetici_ID = YY.ID JOIN Uyeler AS U ON Y.Uye_ID = U.ID";
+                cmd.Parameters.Clear();
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Yorum y = new Yorum();
+                    y.ID = reader.GetInt32(0);
+                    y.Makale_ID = reader.GetInt32(1);
+                    y.Makale = reader.GetString(2);
+                    y.Yonetici_ID = reader.GetInt32(3);
+                    y.Yonetici = reader.GetString(4);
+                    y.Uye_ID = reader.GetInt32(5);
+                    y.Uye = reader.GetString(7);
+                    y.YorumTarih = reader.GetDateTime(8);
+                    y.YorumBegeni = reader.GetInt32(9);
+                    y.YorumIcerik = reader.GetString(10);
+                    y.YorumOnay = reader.GetBoolean(11);
+                    y.YorumOnayStr = reader.GetBoolean(11) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
+                }
+                return yorumlar;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public List<Yorum> YorumListele(int mid)
+        {
+            List<Yorum> yorumlar = new List<Yorum>();
+            try
+            {
+                cmd.CommandText = "SELECT Y.ID, Y.Makale_ID, M.Baslik, Y.Yonetici_ID, YY.KullaniciAdi, Y.Uye_ID, U.KullaniciAdi, U.Isim, Y.YorumTarih, Y.YorumBegeni, Y.YorumIcerik, Y.YorumOnay FROM Yorumlar AS Y JOIN Makaleler AS M ON Y.Makale_ID = M.ID JOIN Yoneticiler AS YY ON Y.Yonetici_ID = YY.ID JOIN Uyeler AS U ON Y.Uye_ID = U.ID WHERE Y.Makale_ID = @mid";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@mid", mid);
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Yorum y = new Yorum();
+                    y.ID = reader.GetInt32(0);
+                    y.Makale_ID=reader.GetInt32(1);
+                    y.Makale = reader.GetString(2);
+                    y.Yonetici_ID = reader.GetInt32(3);
+                    y.Yonetici = reader.GetString(4);
+                    y.Uye_ID = reader.GetInt32(5);
+                    y.Uye = reader.GetString(7);
+                    y.YorumTarih = reader.GetDateTime(8);
+                    y.YorumBegeni = reader.GetInt32(9);
+                    y.YorumIcerik=reader.GetString(10);
+                    y.YorumOnay = reader.GetBoolean(11);
+                    y.YorumOnayStr = reader.GetBoolean(11) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
+                }
+                return yorumlar;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        #endregion
     }
 }

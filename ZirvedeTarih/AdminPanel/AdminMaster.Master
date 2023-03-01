@@ -45,7 +45,7 @@
                 <li>Kullanıcı İşlemleri</li>
             </div>
         </a>
-        <a href="">
+        <a href="YorumListele.aspx">
             <div class="menu">
                 <li>Yorum İşlemleri</li>
             </div>
