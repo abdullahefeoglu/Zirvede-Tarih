@@ -22,7 +22,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Üye</th>
-                            <th>Yönetici</th>
                             <th>Makale</th>
                             <th>Tarih</th>
                             <th>Beğeni</th>
@@ -38,15 +37,14 @@
                 <tr>
                     <td><%#Eval("ID") %></td>
                     <td><%#Eval("Uye") %></td>
-                    <td><%#Eval("Yonetici") %></td>
                     <td><%#Eval("Makale") %></td>
                     <td><%#Eval("YorumTarih") %></td>
                     <td><%#Eval("YorumBegeni") %></td>
                     <td><%#Eval("YorumIcerik") %></td>
                     <td><%#Eval("YorumOnayStr") %></td>
                     <td>
-                        <asp:LinkButton ID="lbtn_onayla" runat="server" CssClass="aktif" CommandArgument='<%#Eval("ID") %>' CommandName="onayla">Onayla</asp:LinkButton>
-                        <asp:LinkButton ID="lbtn_reddet" runat="server" CssClass="pasif" CommandArgument='<%#Eval("ID") %>' CommandName="redder">Onayla</asp:LinkButton>
+                        <asp:LinkButton ID="lbtn_reddet" runat="server" CssClass="reddet" CommandArgument='<%#Eval("ID") %>' CommandName="reddet">Reddet</asp:LinkButton>
+                        <asp:LinkButton ID="lbtn_onayla" runat="server" CssClass="onayla" CommandArgument='<%#Eval("ID") %>' CommandName="onayla">Onayla</asp:LinkButton>
                     </td>
                 </tr>
             </ItemTemplate>
