@@ -18,7 +18,8 @@ namespace DataAccessLayer
         public DateTime YorumTarih { get; set; }
         public int YorumBegeni { get; set; }
         public string YorumIcerik { get; set; }
-        public bool YorumOnay { get; set; }
-        public string YorumOnayStr { get; set; }
+        public bool Aktiflik { get; set; }
+        public string AktiflikStr { get; set; }
+        public string YorumOnay { get; set; }
     }
 }

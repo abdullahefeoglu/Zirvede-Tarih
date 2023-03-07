@@ -1,0 +1,39 @@
+﻿*, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Calibri;
+}
+
+.carrier {
+    width: 100%;
+}
+
+.pageentry {
+    background-color: aqua;
+    height: 80px;
+    text-decoration: none;
+}
+
+.patron {
+    margin-left: 600px;
+}
+
+.kullanici {
+    float: right;
+    color: white;
+    margin-top: -20px;
+    text-decoration: none;
+}
+
+    .kullanici a {
+        text-decoration: none;
+        color: white;
+        font-size:14pt;
+    }
+
+        .kullanici a:hover {
+            text-decoration: underline;
+        }

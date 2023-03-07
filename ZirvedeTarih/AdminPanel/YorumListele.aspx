@@ -26,6 +26,7 @@
                             <th>Tarih</th>
                             <th>Beğeni</th>
                             <th>İçerik</th>
+                            <th>Aktiflik</th>
                             <th>Durum</th>
                             <th>Seçenekler</th>
                         </tr>
@@ -41,7 +42,8 @@
                     <td><%#Eval("YorumTarih") %></td>
                     <td><%#Eval("YorumBegeni") %></td>
                     <td><%#Eval("YorumIcerik") %></td>
-                    <td><%#Eval("YorumOnayStr") %></td>
+                    <td><%#Eval("AktiflikStr") %></td>
+                    <td><%#Eval("YorumOnay") %></td>
                     <td>
                         <asp:LinkButton ID="lbtn_reddet" runat="server" CssClass="reddet" CommandArgument='<%#Eval("ID") %>' CommandName="reddet">Reddet</asp:LinkButton>
                         <asp:LinkButton ID="lbtn_onayla" runat="server" CssClass="onayla" CommandArgument='<%#Eval("ID") %>' CommandName="onayla">Onayla</asp:LinkButton>

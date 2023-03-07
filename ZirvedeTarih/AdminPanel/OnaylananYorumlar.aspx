@@ -40,7 +40,7 @@
                     <td><%#Eval("YorumTarih") %></td>
                     <td><%#Eval("YorumBegeni") %></td>
                     <td><%#Eval("YorumIcerik") %></td>
-                    <td><%#Eval("YorumOnayStr") %></td>
+                    <td><%#Eval("AktiflikStr") %></td>
                     <td>
                         <asp:LinkButton ID="lbtn_reddet" runat="server" CssClass="reddet" CommandArgument='<%#Eval("ID") %>' CommandName="reddet">Reddet</asp:LinkButton>
                     </td>

@@ -526,7 +526,7 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "UPDATE Yorumlar SET YorumOnay = 1 Where ID = @id";
+                cmd.CommandText = "UPDATE Yorumlar SET Aktiflik = 1 Where ID = @id";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", id);
                 con.Open();
@@ -543,7 +543,7 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "UPDATE Yorumlar SET YorumOnay = 0 Where ID = @id";
+                cmd.CommandText = "UPDATE Yorumlar SET Aktiflik = 0 Where ID = @id";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", id);
                 con.Open();
@@ -561,9 +561,9 @@ namespace DataAccessLayer
             List<Yorum> yorumlar = new List<Yorum>();
             try
             {
-                cmd.CommandText = "SELECT Y.ID, Y.Uye_ID,U.KullaniciAdi, Y.Makale_ID, M.Baslik, Y.YorumIcerik, Y.YorumTarih, Y.YorumBegeni, Y.YorumOnay FROM Yorumlar AS Y JOIN Uyeler AS U ON Y.Uye_ID = U.ID JOIN Makaleler AS M ON Y.Makale_ID = M.ID WHERE Y.YorumOnay = @yorumonay";
+                cmd.CommandText = "SELECT Y.ID, Y.Uye_ID,U.KullaniciAdi, Y.Makale_ID, M.Baslik, Y.YorumIcerik, Y.YorumTarih, Y.YorumBegeni, Y.Aktiflik FROM Yorumlar AS Y JOIN Uyeler AS U ON Y.Uye_ID = U.ID JOIN Makaleler AS M ON Y.Makale_ID = M.ID WHERE Y.Aktiflik = @aktiflik";
                 cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@yorumonay", id);
+                cmd.Parameters.AddWithValue("@aktiflik", id);
                 con.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -578,8 +578,8 @@ namespace DataAccessLayer
                     y.YorumIcerik = reader.GetString(5);
                     y.YorumTarih = reader.GetDateTime(6);
                     y.YorumBegeni = reader.GetInt32(7);
-                    y.YorumOnay = reader.GetBoolean(8);
-                    y.YorumOnayStr = reader.GetBoolean(8) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
+                    y.Aktiflik = reader.GetBoolean(8);
+                    y.AktiflikStr = reader.GetBoolean(8) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
                     yorumlar.Add(y);
                 }
                 return yorumlar;
@@ -599,7 +599,7 @@ namespace DataAccessLayer
             List<Yorum> yorumlar = new List<Yorum>();
             try
             {
-                cmd.CommandText = "SELECT Y.ID, Y.Uye_ID,U.KullaniciAdi, Y.Makale_ID, M.Baslik, Y.YorumIcerik, Y.YorumTarih, Y.YorumBegeni, Y.YorumOnay FROM Yorumlar AS Y JOIN Uyeler AS U ON Y.Uye_ID = U.ID JOIN Makaleler AS M ON Y.Makale_ID = M.ID";
+                cmd.CommandText = "SELECT Y.ID, Y.Uye_ID,U.KullaniciAdi, Y.Makale_ID, M.Baslik, Y.YorumIcerik, Y.YorumTarih, Y.YorumBegeni, Y.Aktiflik FROM Yorumlar AS Y JOIN Uyeler AS U ON Y.Uye_ID = U.ID JOIN Makaleler AS M ON Y.Makale_ID = M.ID";
                 cmd.Parameters.Clear();
                 con.Open();
 
@@ -615,8 +615,8 @@ namespace DataAccessLayer
                     y.YorumIcerik = reader.GetString(5);
                     y.YorumTarih = reader.GetDateTime(6);
                     y.YorumBegeni = reader.GetInt32(7);
-                    y.YorumOnay = reader.GetBoolean(8);
-                    y.YorumOnayStr = reader.GetBoolean(8) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
+                    y.Aktiflik = reader.GetBoolean(8);
+                    y.AktiflikStr = reader.GetBoolean(8) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
                     yorumlar.Add(y);
                 }
                 return yorumlar;
