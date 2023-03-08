@@ -27,7 +27,7 @@
             </LayoutTemplate>
             <ItemTemplate>
                 <tr>
-                    <td></td<img src="../MakaleResimleri/<%# Eval("Resim") %>"  />
+                    <td><img src="../MakaleResimleri/<%#Eval("Resim") %>" style="width:30px;"/></td>
                     <td><%#Eval("ID") %></td>
                     <td><%#Eval("Kategori") %></td>
                     <td><%#Eval("Baslik") %></td>

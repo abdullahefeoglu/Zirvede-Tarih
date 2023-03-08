@@ -89,12 +89,14 @@ body {
         background-color: aqua;
         height: 50px;
         font-size: 25pt;
+        padding:5px;
     }
 
 .baslik .bilgi {
     margin-top: 10px;
     float: right;
     font-size: 13pt;
+    padding:5px;    
 }
 
 .resim {

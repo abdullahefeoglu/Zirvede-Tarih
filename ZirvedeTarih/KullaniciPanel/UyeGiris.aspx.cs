@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace ZirvedeTarih.KullaniciPanel
 {
-    public partial class KullaniciGiris : System.Web.UI.Page
+    public partial class UyeGiris : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="KayitOl.aspx.cs" Inherits="ZirvedeTarih.KullaniciPanel.KayitOl" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UyeGiris.aspx.cs" Inherits="ZirvedeTarih.KullaniciPanel.UyeGiris" %>
 
 <!DOCTYPE html>
 

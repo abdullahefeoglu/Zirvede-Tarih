@@ -17,8 +17,8 @@
                         </div>
                     </div>
                     <div class="resim">
-                        <a href='MakaleResimleri/<%# Eval("Resim") %>' target="_blank">
-                            <img src='MakaleResimleri/<%# Eval("Resim") %>' /></a>
+                        <a href='../MakaleResimleri/<%# Eval("Resim") %>' target="_blank">
+                            <img src='../MakaleResimleri/<%# Eval("Resim") %>' /></a>
                     </div>
                     <div class="ozet">
                         <%# Eval("Ozet") %>

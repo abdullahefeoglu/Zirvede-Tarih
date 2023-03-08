@@ -14,13 +14,13 @@
         <div class="carrier">
             <div class="pageentry">
                 <div>
-                    <a href="KullaniciGiris.aspx"> <img src="../ProjeResimleri/Z_D.png" class="logo"/> </a>
+                    <a href="Default.aspx"> <img src="../ProjeResimleri/Z_D.png" class="logo"/> </a>
                 </div>
                 <div class="patron">
                     ZİRVEDE TARİH
                 </div>
                 <asp:Panel ID="pnl_girisYok" runat="server" CssClass="kullanici">
-                    <a href="UyeGirisi.aspx">Giriş Yap</a>
+                    <a href="UyeGiris.aspx">Giriş Yap</a>
                     <a href="KayitOl.aspx" style="margin-left:10px; margin-right:10px;">Kayıt Ol</a>
                 </asp:Panel>
                 <asp:Panel ID="pnl_girisVar" runat="server" CssClass="kullanici" Visible="false">
