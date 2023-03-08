@@ -13,8 +13,12 @@
     <form id="form1" runat="server">
         <div class="carrier">
             <div class="pageentry">
-                <a href="KullaniciGiris.aspx"> <img src=""/> </a>
-                <h2 class="patron">ZİRVEDE TARİH</h2>
+                <div>
+                    <a href="KullaniciGiris.aspx"> <img src="../ProjeResimleri/Z_D.png" class="logo"/> </a>
+                </div>
+                <div class="patron">
+                    ZİRVEDE TARİH
+                </div>
                 <asp:Panel ID="pnl_girisYok" runat="server" CssClass="kullanici">
                     <a href="UyeGirisi.aspx">Giriş Yap</a>
                     <a href="KayitOl.aspx" style="margin-left:10px; margin-right:10px;">Kayıt Ol</a>
@@ -25,8 +29,22 @@
                 </asp:Panel>
                 <div style="clear:both"></div>
             </div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+            <div class="kategorimenu">
+                <ul>
+                    <asp:Repeater ID="rp_kategoriler" runat="server">
+                        <ItemTemplate>
+                            <a href='Default.aspx?kid=<%#Eval("ID") %>'>
+                                <li><%#Eval("Isim") %></li>
+                            </a>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </ul>
+                <div style="clear: both;"></div>
+            </div>
+            <div class="icerik">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
         </div>
     </form>
 </body>

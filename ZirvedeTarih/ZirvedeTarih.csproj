@@ -503,11 +503,14 @@
     <Content Include="AdminPanel\UyeListele.aspx" />
     <Content Include="AdminPanel\YorumListele.aspx" />
     <Content Include="KullaniciPanel\assetss\css\kullanicipanel.css" />
+    <Content Include="KullaniciPanel\Default.aspx" />
     <Content Include="KullaniciPanel\KayitOl.aspx" />
     <Content Include="KullaniciPanel\KullaniciGiris.aspx" />
     <Content Include="KullaniciPanel\UyeGirisi.aspx" />
     <Content Include="MakaleResimleri\bg1.jpg" />
     <Content Include="MakaleResimleri\bg2.png" />
+    <Content Include="ProjeResimleri\8665290_eye_vision_view_icon.png" />
+    <Content Include="ProjeResimleri\Z_D.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -608,6 +611,13 @@
     </Compile>
     <Compile Include="AdminPanel\YorumListele.aspx.designer.cs">
       <DependentUpon>YorumListele.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KullaniciPanel\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KullaniciPanel\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="KullaniciPanel\KayitOl.aspx.cs">
       <DependentUpon>KayitOl.aspx</DependentUpon>

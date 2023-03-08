@@ -69,6 +69,15 @@ namespace ZirvedeTarih
         protected global::System.Web.UI.WebControls.LinkButton lbtn_cikis;
 
         /// <summary>
+        /// rp_kategoriler control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rp_kategoriler;
+
+        /// <summary>
         /// ContentPlaceHolder1 control.
         /// </summary>
         /// <remarks>

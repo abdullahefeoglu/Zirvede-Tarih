@@ -15,10 +15,14 @@ body {
     background-color: aqua;
     height: 80px;
     text-decoration: none;
+    height: 90px;
 }
 
 .patron {
-    margin-left: 600px;
+    margin-left: 650px;
+    margin-top: -60px;
+    font-size: 16pt;
+    color: white;
 }
 
 .kullanici {
@@ -31,9 +35,83 @@ body {
     .kullanici a {
         text-decoration: none;
         color: white;
-        font-size:14pt;
+        font-size: 14pt;
     }
 
         .kullanici a:hover {
             text-decoration: underline;
+            color: black;
         }
+
+.logo {
+    width: 70px;
+    height: 70px;
+    margin-left: 550px;
+    margin-top: 10px;
+}
+
+.kategorimenu {
+    border-bottom: 2px solid black;
+}
+
+    .kategorimenu ul {
+        list-style-type: none;
+    }
+
+    .kategorimenu a {
+        text-decoration: none;
+        color: black;
+        font-weight: 900;
+    }
+
+        .kategorimenu a li {
+            padding: 15px;
+            float: left;
+        }
+
+    .kategorimenu li:hover {
+        border-bottom: 3px solid black;
+        margin-top: 7px;
+    }
+
+.sayfa {
+    height: 1500px;
+}
+
+.makale {
+    margin-top: 30px;
+    width: 1000px;
+    margin-left: 300px;
+}
+
+    .makale .baslik {
+        color: white;
+        background-color: aqua;
+        height: 50px;
+        font-size: 25pt;
+    }
+
+.baslik .bilgi {
+    margin-top: 10px;
+    float: right;
+    font-size: 13pt;
+}
+
+.resim {
+    float: left;
+    width: 200px;
+}
+
+    .resim img {
+        width: 300px;
+    }
+
+.ozet {
+    float: right;
+    width: 680px;
+    padding: 10px 0;
+}
+
+.kategori {
+    margin-top: 320px;
+}

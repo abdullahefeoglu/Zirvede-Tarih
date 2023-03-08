@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="logo">
-            LOGO EKLENECEK
+            <img src="../ProjeResimleri/Z_D.png" class="logo"/>
         </div>
         <div class="loginBox">
             <div class="row">Admin Panel Girişi</div>

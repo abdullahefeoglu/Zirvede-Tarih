@@ -521,6 +521,7 @@ namespace DataAccessLayer
             finally { con.Close(); }
         }
         #endregion
+
         #region Yorumlar
         public bool YorumOnayla(int id)
         {
