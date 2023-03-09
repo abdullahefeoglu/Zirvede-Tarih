@@ -474,11 +474,12 @@ namespace DataAccessLayer
                     u.ID = reader.GetInt32(0);
                     u.Isim = reader.GetString(1);
                     u.KullaniciAdi = reader.GetString(2);
-                    u.Sifre = reader.GetString(3);
-                    u.KatılımTarihi = reader.GetDateTime(4);
-                    u.YorumSayisi = reader.GetInt32(5);
-                    u.Aktif = reader.GetBoolean(6);
-                    u.AktifStr = reader.GetBoolean(6) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
+                    u.Eposta = reader.GetString(3);
+                    u.Sifre = reader.GetString(4);
+                    u.KatılımTarihi = reader.GetDateTime(5);
+                    u.YorumSayisi = reader.GetInt32(6);
+                    u.Aktif = reader.GetBoolean(7);
+                    u.AktifStr = reader.GetBoolean(7) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
                     uyeler.Add(u);
                 }
                 return uyeler;
@@ -505,11 +506,12 @@ namespace DataAccessLayer
                     u.ID = reader.GetInt32(0);
                     u.Isim = reader.GetString(1);
                     u.KullaniciAdi = reader.GetString(2);
-                    u.Sifre = reader.GetString(3);
-                    u.KatılımTarihi = reader.GetDateTime(4);
-                    u.YorumSayisi = reader.GetInt32(5);
-                    u.Aktif = reader.GetBoolean(6);
-                    u.AktifStr = reader.GetBoolean(6) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
+                    u.Eposta = reader.GetString(3);
+                    u.Sifre = reader.GetString(4);
+                    u.KatılımTarihi = reader.GetDateTime(5);
+                    u.YorumSayisi = reader.GetInt32(6);
+                    u.Aktif = reader.GetBoolean(7);
+                    u.AktifStr = reader.GetBoolean(7) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
                     uyeler.Add(u);
                 }
                 return uyeler;
@@ -518,6 +520,24 @@ namespace DataAccessLayer
             {
                 return null;
             }
+            finally { con.Close(); }
+        }
+        public bool UyeEkle(Uye u)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO Uyeler(Isim, KullaniciAdi, Eposta, Sifre, Aktif) VALUES(@isim, @kullaniciadi, @eposta, @sifre, @aktif)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@isim", u.Isim);
+                cmd.Parameters.AddWithValue("@kullaniciadi",u.KullaniciAdi);
+                cmd.Parameters.AddWithValue("@eposta", u.Eposta);
+                cmd.Parameters.AddWithValue("@sifre", u.Sifre);
+                cmd.Parameters.AddWithValue("@aktif", u.Aktif);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch { return false; }
             finally { con.Close(); }
         }
         #endregion

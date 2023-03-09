@@ -11,6 +11,7 @@ namespace DataAccessLayer
         public int ID { get; set; }
         public string Isim { get; set; }
         public string KullaniciAdi { get; set; }
+        public string Eposta { get; set; }
         public string Sifre { get; set; }
         public DateTime KatılımTarihi { get; set; }
         public int YorumSayisi { get; set; }

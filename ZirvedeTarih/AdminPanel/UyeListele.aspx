@@ -22,6 +22,7 @@
                             <th>ID</th>
                             <th>Isim</th>
                             <th>KullaniciAdi</th>
+                            <th>E-posta</th>
                             <th>KatılımTarihi</th>
                             <th>YorumSayisi</th>
                             <th>Durum</th>
@@ -37,6 +38,7 @@
                     <td><%#Eval("ID") %></td>
                     <td><%#Eval("Isim") %></td>
                     <td><%#Eval("KullaniciAdi") %></td>
+                    <td><%#Eval("Eposta") %></td>
                     <td><%#Eval("KatılımTarihi") %></td>
                     <td><%#Eval("YorumSayisi") %></td>
                     <td><%#Eval("AktifStr") %></td>
