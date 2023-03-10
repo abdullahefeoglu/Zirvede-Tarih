@@ -15,8 +15,7 @@ namespace ZirvedeTarih.KullaniciPanel
         {
 
         }
-
-        protected void lbtn_login_Click(object sender, EventArgs e)
+        protected void lbtn_kayit_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(tb_isim.Text.Trim()))
             {
@@ -31,6 +30,8 @@ namespace ZirvedeTarih.KullaniciPanel
                             u.KullaniciAdi = tb_kullaniciadi.Text;
                             u.Eposta = tb_eposta.Text;
                             u.Sifre = tb_sifre.Text;
+                            u.KatılımTarihi = DateTime.Now;
+                            u.YorumSayisi = 0;
                             u.Aktif = true;
                             if (dm.UyeEkle(u))
                             {

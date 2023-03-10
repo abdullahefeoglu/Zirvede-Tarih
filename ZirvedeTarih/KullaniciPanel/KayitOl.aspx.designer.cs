@@ -87,12 +87,12 @@ namespace ZirvedeTarih.KullaniciPanel
         protected global::System.Web.UI.WebControls.Label lbl_mesaj;
 
         /// <summary>
-        /// lbtn_login control.
+        /// lbtn_kayit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtn_login;
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_kayit;
     }
 }

@@ -526,18 +526,61 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "INSERT INTO Uyeler(Isim, KullaniciAdi, Eposta, Sifre, Aktif) VALUES(@isim, @kullaniciadi, @eposta, @sifre, @aktif)";
+                cmd.CommandText = "INSERT INTO Uyeler(Isim, KullaniciAdi, Eposta, Sifre, KatılımTarihi, YorumSayisi, Aktif) VALUES(@isim, @kullaniciadi, @eposta, @sifre, @katilimtarihi, @yorumsayisi, @aktif)";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@isim", u.Isim);
-                cmd.Parameters.AddWithValue("@kullaniciadi",u.KullaniciAdi);
+                cmd.Parameters.AddWithValue("@kullaniciadi", u.KullaniciAdi);
                 cmd.Parameters.AddWithValue("@eposta", u.Eposta);
                 cmd.Parameters.AddWithValue("@sifre", u.Sifre);
+                cmd.Parameters.AddWithValue("@katilimtarihi", u.KatılımTarihi);
+                cmd.Parameters.AddWithValue("@yorumsayisi", u.YorumSayisi);
                 cmd.Parameters.AddWithValue("@aktif", u.Aktif);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 return true;
             }
             catch { return false; }
+            finally { con.Close(); }
+        }
+
+        public Uye UyeGiris(string eposta, string sifre)
+        {
+            try
+            {
+                cmd.CommandText = "SELECT COUNT(*) FROM Uyeler WHERE Eposta=@eposta AND Sifre=@sifre";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@eposta", eposta);
+                cmd.Parameters.AddWithValue("@sifre", sifre);
+                con.Open();
+                int sayi = Convert.ToInt32(cmd.ExecuteScalar());
+                if (sayi > 0)
+                {
+                    cmd.CommandText = "SELECT COUNT(*) FROM Uyeler WHERE Eposta=@eposta AND Sifre=@sifre";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@eposta", eposta);
+                    cmd.Parameters.AddWithValue("@sifre", sifre);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    Uye u = new Uye();
+                    while (reader.Read())
+                    {
+                        u.ID = reader.GetInt32(0);
+                        u.Isim = reader.GetString(1);
+                        u.KullaniciAdi = reader.GetString(2);
+                        u.Eposta = reader.GetString(3);
+                        u.Sifre = reader.GetString(4);
+                        u.Aktif = reader.GetBoolean(7);
+                    }
+                    return u;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
             finally { con.Close(); }
         }
         #endregion

@@ -32,7 +32,7 @@
                 <asp:Label ID="lbl_mesaj" runat="server"></asp:Label>
             </asp:Panel><br /><br />
             <div>
-                <asp:LinkButton ID="lbtn_login" runat="server" CssClass="loginbutton" OnClick="lbtn_login_Click">Kayıt Ol</asp:LinkButton>
+                <asp:LinkButton ID="lbtn_kayit" runat="server" CssClass="loginbutton" OnClick="lbtn_kayit_Click">Kayıt Ol</asp:LinkButton>
             </div><br /><br />
             <a href="Default.aspx" class="don">Anasayfaya Dön</a>
         </div>
