@@ -26,7 +26,8 @@
                         <a href='MakaleOku.aspx?mid=<%# Eval("ID") %>'>Devamı...</a>
                     </div>
                     <div class="kategori">
-                        Kategori : <%# Eval("Kategori") %>
+                        Kategori : <%# Eval("Kategori") %> <br />
+                        Kategori Açıklaması : <%# Eval("kategoriAciklama") %>
                     </div>
                     <hr />
                 </div>

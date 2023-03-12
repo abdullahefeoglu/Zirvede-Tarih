@@ -13,6 +13,7 @@ namespace DataAccessLayer
         public string Yonetici { get; set; }
         public int Kategori_ID { get; set; }
         public string Kategori { get; set; }
+        public string kategoriAciklama { get; set; }
         public string  Baslik { get; set; }
         public string Ozet { get; set; }
         public string Icerik { get; set; }

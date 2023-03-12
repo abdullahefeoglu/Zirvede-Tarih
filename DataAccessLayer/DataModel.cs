@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace DataAccessLayer
 {
     public class DataModel
     {
+
         SqlConnection con; SqlCommand cmd;
 
         public DataModel()
@@ -174,13 +176,12 @@ namespace DataAccessLayer
             }
             finally { con.Close(); }
         }
-
         public List<Makale> MakaleListele()
         {
             try
             {
                 List<Makale> Makaleler = new List<Makale>();
-                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID";
+                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, K.kategoriAciklama, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID";
                 cmd.Parameters.Clear();
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -190,18 +191,19 @@ namespace DataAccessLayer
                     m.ID = reader.GetInt32(0);
                     m.Kategori_ID = reader.GetInt32(1);
                     m.Kategori = reader.GetString(2);
-                    m.Yonetici_ID = reader.GetInt32(3);
-                    m.Yonetici = reader.GetString(4);
-                    m.Baslik = reader.GetString(5);
-                    m.Ozet = reader.GetString(6);
-                    m.Icerik = reader.GetString(7);
-                    m.Resim = reader.GetString(8);
-                    m.GoruntulemeSayisi = reader.GetInt32(9);
-                    m.EklemeTarihi = reader.GetDateTime(10);
-                    m.EklemeTarihStr = reader.GetDateTime(10).ToShortDateString();
-                    m.BegeniSayisi = reader.GetInt32(11);
-                    m.Yayinda = reader.GetBoolean(12);
-                    m.YayindaStr = reader.GetBoolean(12) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
+                    m.kategoriAciklama = reader.GetString(3);
+                    m.Yonetici_ID = reader.GetInt32(4);
+                    m.Yonetici = reader.GetString(5);
+                    m.Baslik = reader.GetString(6);
+                    m.Ozet = reader.GetString(7);
+                    m.Icerik = reader.GetString(8);
+                    m.Resim = reader.GetString(9);
+                    m.GoruntulemeSayisi = reader.GetInt32(10);
+                    m.EklemeTarihi = reader.GetDateTime(11);
+                    m.EklemeTarihStr = reader.GetDateTime(11).ToShortDateString();
+                    m.BegeniSayisi = reader.GetInt32(12);
+                    m.Yayinda = reader.GetBoolean(13);
+                    m.YayindaStr = reader.GetBoolean(13) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
                     Makaleler.Add(m);
                 }
                 return Makaleler;
@@ -215,14 +217,12 @@ namespace DataAccessLayer
                 con.Close();
             }
         }
-
-
         public List<Makale> MakaleListele(int kid, bool durum)
         {
             try
             {
                 List<Makale> Makaleler = new List<Makale>();
-                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.Kategori_ID=@kategori_ID AND M.Yayinda=@durum";
+                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, K.kategoriAciklama, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.Kategori_ID=@kategori_ID AND M.Yayinda=@durum";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@durum", durum);
                 cmd.Parameters.AddWithValue("@kategori_ID", kid);
@@ -235,18 +235,19 @@ namespace DataAccessLayer
                     m.ID = reader.GetInt32(0);
                     m.Kategori_ID = reader.GetInt32(1);
                     m.Kategori = reader.GetString(2);
-                    m.Yonetici_ID = reader.GetInt32(3);
-                    m.Yonetici = reader.GetString(4);
-                    m.Baslik = reader.GetString(5);
-                    m.Ozet = reader.GetString(6);
-                    m.Icerik = reader.GetString(7);
-                    m.Resim = reader.GetString(8);
-                    m.GoruntulemeSayisi = reader.GetInt32(9);
-                    m.EklemeTarihi = reader.GetDateTime(10);
-                    m.EklemeTarihStr = reader.GetDateTime(10).ToShortDateString();
-                    m.BegeniSayisi = reader.GetInt32(11);
-                    m.Yayinda = reader.GetBoolean(12);
-                    m.YayindaStr = reader.GetBoolean(12) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
+                    m.kategoriAciklama = reader.GetString(3);
+                    m.Yonetici_ID = reader.GetInt32(4);
+                    m.Yonetici = reader.GetString(5);
+                    m.Baslik = reader.GetString(6);
+                    m.Ozet = reader.GetString(7);
+                    m.Icerik = reader.GetString(8);
+                    m.Resim = reader.GetString(9);
+                    m.GoruntulemeSayisi = reader.GetInt32(10);
+                    m.EklemeTarihi = reader.GetDateTime(11);
+                    m.EklemeTarihStr = reader.GetDateTime(11).ToShortDateString();
+                    m.BegeniSayisi = reader.GetInt32(12);
+                    m.Yayinda = reader.GetBoolean(13);
+                    m.YayindaStr = reader.GetBoolean(13) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
                     Makaleler.Add(m);
                 }
                 return Makaleler;
@@ -260,7 +261,6 @@ namespace DataAccessLayer
                 con.Close();
             }
         }
-
         public bool MakaleSil(int id)
         {
             try
@@ -289,7 +289,7 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.ID = @id";
+                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, K.kategoriAciklama M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.ID = @id";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", id);
                 con.Open();
@@ -301,18 +301,19 @@ namespace DataAccessLayer
                     m.ID = reader.GetInt32(0);
                     m.Kategori_ID = reader.GetInt32(1);
                     m.Kategori = reader.GetString(2);
-                    m.Yonetici_ID = reader.GetInt32(3);
-                    m.Yonetici = reader.GetString(4);
-                    m.Baslik = reader.GetString(5);
-                    m.Ozet = reader.GetString(6);
-                    m.Icerik = reader.GetString(7);
-                    m.Resim = reader.GetString(8);
-                    m.GoruntulemeSayisi = reader.GetInt32(9);
-                    m.EklemeTarihi = reader.GetDateTime(10);
-                    m.EklemeTarihStr = reader.GetDateTime(10).ToShortDateString();
-                    m.BegeniSayisi = reader.GetInt32(11);
-                    m.Yayinda = reader.GetBoolean(12);
-                    m.YayindaStr = reader.GetBoolean(12) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
+                    m.kategoriAciklama = reader.GetString(3);
+                    m.Yonetici_ID = reader.GetInt32(4);
+                    m.Yonetici = reader.GetString(5);
+                    m.Baslik = reader.GetString(6);
+                    m.Ozet = reader.GetString(7);
+                    m.Icerik = reader.GetString(8);
+                    m.Resim = reader.GetString(9);
+                    m.GoruntulemeSayisi = reader.GetInt32(10);
+                    m.EklemeTarihi = reader.GetDateTime(11);
+                    m.EklemeTarihStr = reader.GetDateTime(11).ToShortDateString();
+                    m.BegeniSayisi = reader.GetInt32(12);
+                    m.Yayinda = reader.GetBoolean(13);
+                    m.YayindaStr = reader.GetBoolean(13) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
                 }
                 return m;
             }
@@ -371,52 +372,6 @@ namespace DataAccessLayer
                 {
                     return false;
                 }
-            }
-            finally { con.Close(); }
-        }
-        #endregion
-
-        #region Yönetici
-        public Yonetici AdminGiris(string mail, string sifre)
-        {
-            try
-            {
-                cmd.CommandText = "SELECT COUNT(*) FROM Yoneticiler WHERE Mail=@mail AND Sifre=@sifre";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@mail", mail);
-                cmd.Parameters.AddWithValue("@sifre", sifre);
-                con.Open();
-                int sayi = Convert.ToInt32(cmd.ExecuteScalar());
-
-                if (sayi > 0)
-                {
-                    cmd.CommandText = "SELECT ID, Isim, Soyad, KullaniciAdi, Mail, Sifre, Aktif FROM Yoneticiler WHERE Mail=@mail AND Sifre=@sifre";
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@mail", mail);
-                    cmd.Parameters.AddWithValue("@sifre", sifre);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    Yonetici y = new Yonetici();
-                    while (reader.Read())
-                    {
-                        y.ID = reader.GetInt32(0);
-                        y.Isim = reader.GetString(1);
-                        y.Soyad = reader.GetString(2);
-                        y.KullaniciAdi = reader.GetString(3);
-                        y.Mail = reader.GetString(4);
-                        y.Sifre = reader.GetString(5);
-                        y.Aktif = reader.GetBoolean(6);
-
-                    }
-                    return y;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch
-            {
-                return null;
             }
             finally { con.Close(); }
         }
@@ -585,6 +540,53 @@ namespace DataAccessLayer
         }
         #endregion
 
+        #region Yönetici
+        public Yonetici AdminGiris(string mail, string sifre)
+        {
+            try
+            {
+                cmd.CommandText = "SELECT COUNT(*) FROM Yoneticiler WHERE Mail=@mail AND Sifre=@sifre";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@mail", mail);
+                cmd.Parameters.AddWithValue("@sifre", sifre);
+                con.Open();
+                int sayi = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (sayi > 0)
+                {
+                    cmd.CommandText = "SELECT ID, Isim, Soyad, KullaniciAdi, Mail, Sifre, Aktif FROM Yoneticiler WHERE Mail=@mail AND Sifre=@sifre";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@mail", mail);
+                    cmd.Parameters.AddWithValue("@sifre", sifre);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    Yonetici y = new Yonetici();
+                    while (reader.Read())
+                    {
+                        y.ID = reader.GetInt32(0);
+                        y.Isim = reader.GetString(1);
+                        y.Soyad = reader.GetString(2);
+                        y.KullaniciAdi = reader.GetString(3);
+                        y.Mail = reader.GetString(4);
+                        y.Sifre = reader.GetString(5);
+                        y.Aktif = reader.GetBoolean(6);
+
+                    }
+                    return y;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+            finally { con.Close(); }
+        }
+
+        #endregion
+
         #region Yorumlar
         public bool YorumOnayla(int id)
         {
@@ -657,7 +659,6 @@ namespace DataAccessLayer
                 con.Close();
             }
         }
-
         public List<Yorum> YorumListele()
         {
             List<Yorum> yorumlar = new List<Yorum>();
@@ -694,7 +695,10 @@ namespace DataAccessLayer
                 con.Close();
             }
         }
-
         #endregion
     }
+    
 }
+
+
+

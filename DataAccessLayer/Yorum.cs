@@ -20,6 +20,5 @@ namespace DataAccessLayer
         public string YorumIcerik { get; set; }
         public bool Aktiflik { get; set; }
         public string AktiflikStr { get; set; }
-        public string YorumOnay { get; set; }
     }
 }

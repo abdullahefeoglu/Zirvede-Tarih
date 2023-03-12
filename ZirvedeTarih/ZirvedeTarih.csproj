@@ -502,9 +502,11 @@
     <Content Include="AdminPanel\ReddedilenYorumlar.aspx" />
     <Content Include="AdminPanel\UyeListele.aspx" />
     <Content Include="AdminPanel\YorumListele.aspx" />
+    <Content Include="KullaniciPanel\assetss\css\kullaniciarayuz.css" />
     <Content Include="KullaniciPanel\assetss\css\kullanicipanel.css" />
     <Content Include="KullaniciPanel\Default.aspx" />
     <Content Include="KullaniciPanel\KayitOl.aspx" />
+    <Content Include="KullaniciPanel\MakaleOku.aspx" />
     <Content Include="KullaniciPanel\UyeGiris.aspx" />
     <Content Include="MakaleResimleri\bg1.jpg" />
     <Content Include="MakaleResimleri\bg2.png" />
@@ -624,6 +626,13 @@
     </Compile>
     <Compile Include="KullaniciPanel\KayitOl.aspx.designer.cs">
       <DependentUpon>KayitOl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KullaniciPanel\MakaleOku.aspx.cs">
+      <DependentUpon>MakaleOku.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KullaniciPanel\MakaleOku.aspx.designer.cs">
+      <DependentUpon>MakaleOku.aspx</DependentUpon>
     </Compile>
     <Compile Include="KullaniciPanel\MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
