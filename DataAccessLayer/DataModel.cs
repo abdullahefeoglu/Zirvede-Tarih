@@ -289,7 +289,7 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, K.kategoriAciklama M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.ID = @id";
+                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, K.kategoriAciklama, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.ID = @id";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", id);
                 con.Open();
@@ -330,7 +330,7 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "UPDATE Makaleler SET Baslik = @baslik, Kategori_ID = kategori_ID, Ozet = @ozet, Icerik = @icerik, Resim = @resim, Yayında = @yayinda WHERE ID=@id";
+                cmd.CommandText = "UPDATE Makaleler SET Baslik = @baslik, Kategori_ID = @kategori_ID, Ozet = @ozet, Icerik = @icerik, Resim = @resim, Yayında = @yayinda WHERE ID=@id";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", m.ID);
                 cmd.Parameters.AddWithValue("@baslik", m.Baslik);
@@ -376,6 +376,29 @@ namespace DataAccessLayer
             finally { con.Close(); }
         }
 
+        public bool GoruntulemeArttir(int mid)
+        {
+            try
+            {
+                cmd.CommandText = "SELECT GoruntulemeSayisi FROM Makaleler WHERE ID = @İD";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", mid);
+                con.Open();
+                int sayi = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.CommandText = "UPDATE Makaleler SET GoruntulemeSayisi = @gsayi WHERE ID = @id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", mid);
+                sayi = sayi + 1;
+                cmd.Parameters.AddWithValue("@gsayi", sayi);
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally { con.Close(); }
+        }
         #endregion
 
         #region Uyeler
@@ -510,7 +533,7 @@ namespace DataAccessLayer
                 int sayi = Convert.ToInt32(cmd.ExecuteScalar());
                 if (sayi > 0)
                 {
-                    cmd.CommandText = "SELECT COUNT(*) FROM Uyeler WHERE Eposta=@eposta AND Sifre=@sifre";
+                    cmd.CommandText = "SELECT * FROM Uyeler WHERE Eposta=@eposta AND Sifre=@sifre";
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@eposta", eposta);
                     cmd.Parameters.AddWithValue("@sifre", sifre);
@@ -697,7 +720,7 @@ namespace DataAccessLayer
         }
         #endregion
     }
-    
+
 }
 
 

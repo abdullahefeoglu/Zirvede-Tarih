@@ -11,7 +11,7 @@
             
             <div class="row">
                 <label style="margin-left: 100px;">Kategoriler</label><br />
-                <asp:DropDownList ID="ddl_kategoriler" runat="server" CssClass="inputBox" AppendDataBoundItems="true" Style="width: 220px; margin-left: 100px;">
+                <asp:DropDownList ID="ddl_kategoriler" runat="server" CssClass="inputBox" AppendDataBoundItems="true" Style="width: 220px; margin-left: 100px; background-color:aqua;">
                     <asp:ListItem Text="Seçiniz" Value="0"></asp:ListItem>
                 </asp:DropDownList>
             </div>

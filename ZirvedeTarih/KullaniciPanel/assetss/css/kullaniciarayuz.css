@@ -1,2 +1,86 @@
 ﻿body {
 }
+
+.sayfaMakale {
+    width: 1300px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.mbaslik {
+    background-color: #00E3CC;
+    height: 50px;
+    padding: 15px;
+}
+
+.mbilgi {
+    float: right;
+    padding: 18px;
+    margin-right: 20px;
+}
+
+.micerik {
+    width: 1000px;
+    padding: 20px 0;
+}
+
+.begining {
+    font-size: 25pt;
+}
+
+.yorumPanel {
+    margin-top: 5px;
+    padding: 25px;
+    height: 1000px;
+}
+
+.forminput {
+    width: 1300px;
+    padding: 5px;
+}
+
+.formbutton {
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    background-color: #00635A;
+    text-decoration: none;
+}
+
+.yorum {
+    border: 1px solid black;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.girisyok {
+    margin-top: 10px;
+    padding: 20px;
+    color: darkorange;
+    border: 2px solid red;
+}
+
+    .girisyok a {
+        color: blue;
+        text-decoration: none;
+    }
+
+        .girisyok a:hover {
+            color: orangered;
+            text-decoration: underline;
+        }
+
+.girisvar {
+    padding: 20px;
+}
+
+    .girisvar .forminput {
+        margin-bottom: 10px;
+        width: 97%;
+    }
+
+    .girisvar .formbutton {
+        margin-top: 10px;
+        float: none !important;
+        padding: 10px 20px !important;
+    }

@@ -26,7 +26,7 @@
                 <asp:Label ID="lbl_mesaj" runat="server"></asp:Label>
             </asp:Panel><br /><br />
             <div>
-                <asp:LinkButton ID="lbtn_login" runat="server" CssClass="loginbutton" >Giriş Yap</asp:LinkButton>
+                <asp:LinkButton ID="lbtn_login" runat="server" CssClass="loginbutton" OnClick="lbtn_login_Click" >Giriş Yap</asp:LinkButton>
             </div><br /><br />
             <a href="Default.aspx" class="don">Anasayfaya Dön</a>
         </div>

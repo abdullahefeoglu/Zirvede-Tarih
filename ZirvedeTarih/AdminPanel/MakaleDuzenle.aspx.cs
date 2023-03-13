@@ -23,9 +23,7 @@ namespace ZirvedeTarih.AdminPanel
                     ddl_kategoriler.DataValueField = "ID";
                     ddl_kategoriler.DataSource = dm.KategoriListele();
                     ddl_kategoriler.DataBind();
-
                     Makale m = dm.MakaleGetir(id);
-
                     ddl_kategoriler.SelectedValue = m.Kategori_ID.ToString();
                     tb_baslik.Text = m.Baslik;
                     tb_icerik.Text = m.Icerik;

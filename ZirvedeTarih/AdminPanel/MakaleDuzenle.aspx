@@ -5,7 +5,7 @@
     <div class="boxContainer">
         <div style="height: 1000px;">
             <div class="begining">
-                <h1>Makale Ekle</h1>
+                <h1>Makale Düzenle</h1>
             </div>
             
             <div class="row">

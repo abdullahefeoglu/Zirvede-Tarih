@@ -42,22 +42,13 @@ namespace ZirvedeTarih.KullaniciPanel
         protected global::System.Web.UI.WebControls.Literal ltrl_yazar;
 
         /// <summary>
-        /// ltrl_kategori control.
+        /// ltrl_goruntulenmeSayisi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrl_kategori;
-
-        /// <summary>
-        /// ltrl_goruntuleme control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrl_goruntuleme;
+        protected global::System.Web.UI.WebControls.Literal ltrl_goruntulenmeSayisi;
 
         /// <summary>
         /// ltrl_icerik control.
@@ -67,5 +58,77 @@ namespace ZirvedeTarih.KullaniciPanel
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltrl_icerik;
+
+        /// <summary>
+        /// ltrl_kategori control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrl_kategori;
+
+        /// <summary>
+        /// ltrl_aciklama control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrl_aciklama;
+
+        /// <summary>
+        /// pnl_girisvar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl_girisvar;
+
+        /// <summary>
+        /// tb_yorum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_yorum;
+
+        /// <summary>
+        /// lbtn_yorumYap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_yorumYap;
+
+        /// <summary>
+        /// pnl_girisyok control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl_girisyok;
+
+        /// <summary>
+        /// lbtn_girisyonlendir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_girisyonlendir;
+
+        /// <summary>
+        /// rp_yorumlar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rp_yorumlar;
     }
 }
