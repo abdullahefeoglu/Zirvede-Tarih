@@ -4,50 +4,57 @@
     <link href="assetss/css/kullaniciarayuz.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="sayfaMakale">
-        <asp:Image ID="img_resim" runat="server" />
-        <div class="mbaslik">
-            <asp:Literal ID="ltrl_baslik" runat="server"></asp:Literal>
-            <div class="mbilgi">
-                Yazar :
-                <asp:Literal ID="ltrl_yazar" runat="server"></asp:Literal>
-                <img src="../ProjeResimleri/8665290_eye_vision_view_icon.png" style="width: 15px; height: 15px;" />
-                <asp:Literal ID="ltrl_goruntulenmeSayisi" runat="server"></asp:Literal>
-            </div>
-        </div>
-        <div class="micerik">
-            <asp:Literal ID="ltrl_icerik" runat="server"></asp:Literal>
-        </div>
-        <div class="mkategori">
-            Kategori :
-            <asp:Literal ID="ltrl_kategori" runat="server"></asp:Literal><br />
-            Kategori Açıklaması :
-            <asp:Literal ID="ltrl_aciklama" runat="server"></asp:Literal>
-        </div>
-    </div>
-    <hr />
-    <div class="yorumPanel">
-        <div class="begining">
-            Yorumlar
-        </div>
-        <asp:Panel ID="pnl_girisvar" runat="server" CssClass="girisvar" >
-            <asp:TextBox ID="tb_yorum" runat="server" TextMode="MultiLine" CssClass="forminput"></asp:TextBox>
-            <br /><br />
-            <asp:LinkButton ID="lbtn_yorumYap" runat="server" CssClass="formbutton">Yorum Yap</asp:LinkButton>
-        </asp:Panel>
-        <asp:Panel ID="pnl_girisyok" runat="server" CssClass="girisyok">
-            Yorum Yapabilmek İçin Lütfen öncelikle <asp:LinkButton ID="lbtn_girisyonlendir" runat="server" OnClick="lbtn_girisyonlendir_Click">Giriş</asp:LinkButton> yapınız.
-        </asp:Panel>
-        <div class="begining">
+    <div class="sayfa">
+        <asp:Repeater ID="rp_makaleler" runat="server">
+            <ItemTemplate>
+                <div class="resim">
+                    <a href='../MakaleResimleri/<%# Eval("Resim") %>' target="_blank">
+                        <img src='../MakaleResimleri/<%# Eval("Resim") %>' /></a>
+                </div>
+                <div class="baslik">
+                    <%#Eval("Baslik") %>
+                    <div class="bilgi">
+                        Yazar : <%#Eval("Yonetici") %> |
+                    <img src="../ProjeResimleri/8665290_eye_vision_view_icon.png" style="width: 15px; height: 15px;" />
+                        <%#Eval("GoruntulemeSayisi") %> |
+                    <img src="../ProjeResimleri/8664909_heart_like_icon.png" style="width: 15px; height: 15px;" />
+                        <%#Eval("BegeniSayisi") %>
+                    </div>
+                </div>
+                <div class="icerik">
+                    <%# Eval("Icerik") %>
+                </div>
+                <div class="kategori">
+                    <strong>Kategori : </strong><%# Eval("Kategori") %>
+                    <br />
+                    <strong>Kategori Açıklaması : </strong><%# Eval("kategoriAciklama") %>
+                    <br />
+                    <strong>Eklenme Tarihi : </strong><%# Eval("EklemeTarihi") %>
+                </div>
+                <hr />
+
+                <br />
+                <br />
+            </ItemTemplate>
+        </asp:Repeater>
+        <div class="yorumPanel">
+            <h2>Yorumlar</h2>
+            <asp:Panel ID="pnl_girisvar" runat="server" CssClass="girisvar">
+                <asp:TextBox ID="tb_yorum" runat="server" TextMode="MultiLine" CssClass="forminput"></asp:TextBox><br /><br />
+                <asp:LinkButton ID="lbtn_yorumyap" runat="server" CssClass="formbutton" OnClick="lbtn_yorumyap_Click">Yorum Yap</asp:LinkButton>
+            </asp:Panel>
+            <asp:Panel ID="pnl_girisyok" runat="server" CssClass="girisyok">
+                Yorum Yapabilmek İçin Lütfen öncelikle <asp:LinkButton ID="lbtn_girisyonlendir" runat="server" OnClick="lbtn_girisyonlendir_Click">Giriş</asp:LinkButton> Yapınız.
+            </asp:Panel>
             <asp:Repeater ID="rp_yorumlar" runat="server">
                 <ItemTemplate>
                     <div class="yorum">
-                        Üye : <label class="yorumUye"><%#Eval("Uye") %></label><br />
-                        <%#Eval("YorumIcerik") %>
+                        <strong>Üye : </strong>
+                        <label class="yorumUye"><%#Eval("Uye") %></label><br />
+                        <strong> Yorumu </strong><br />
+                        <%# Eval("YorumIcerik") %>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
         </div>
-    </div>
-    <hr />
 </asp:Content>

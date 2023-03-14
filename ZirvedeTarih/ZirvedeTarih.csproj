@@ -510,6 +510,7 @@
     <Content Include="KullaniciPanel\UyeGiris.aspx" />
     <Content Include="MakaleResimleri\bg1.jpg" />
     <Content Include="MakaleResimleri\bg2.png" />
+    <Content Include="ProjeResimleri\8664909_heart_like_icon.png" />
     <Content Include="ProjeResimleri\8665290_eye_vision_view_icon.png" />
     <Content Include="ProjeResimleri\Z_D.png" />
     <Content Include="Web.config" />

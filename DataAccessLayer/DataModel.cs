@@ -222,7 +222,7 @@ namespace DataAccessLayer
             try
             {
                 List<Makale> Makaleler = new List<Makale>();
-                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, K.kategoriAciklama, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.Kategori_ID=@kategori_ID AND M.Yayinda=@durum";
+                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, K.kategoriAciklama, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.Kategori_ID = @kategori_ID AND M.Yayinda=@durum";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@durum", durum);
                 cmd.Parameters.AddWithValue("@kategori_ID", kid);
@@ -260,6 +260,47 @@ namespace DataAccessLayer
             {
                 con.Close();
             }
+        }
+
+        public List<Makale> MakaleListele( int mid)
+        {
+            List<Makale> Makaleler = new List<Makale>();
+            try
+            {
+                cmd.CommandText = "SELECT SELECT M.ID, M.Kategori_ID, K.Isim, K.kategoriAciklama, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.ID=@id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", mid);
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Makale m = new Makale();
+                    m.ID = reader.GetInt32(0);
+                    m.Kategori_ID = reader.GetInt32(1);
+                    m.Kategori = reader.GetString(2);
+                    m.kategoriAciklama = reader.GetString(3);
+                    m.Yonetici_ID = reader.GetInt32(4);
+                    m.Yonetici = reader.GetString(5);
+                    m.Baslik = reader.GetString(6);
+                    m.Ozet = reader.GetString(7);
+                    m.Icerik = reader.GetString(8);
+                    m.Resim = reader.GetString(9);
+                    m.GoruntulemeSayisi = reader.GetInt32(10);
+                    m.EklemeTarihi = reader.GetDateTime(11);
+                    m.EklemeTarihStr = reader.GetDateTime(11).ToShortDateString();
+                    m.BegeniSayisi = reader.GetInt32(12);
+                    m.Yayinda = reader.GetBoolean(13);
+                    m.YayindaStr = reader.GetBoolean(13) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
+                    Makaleler.Add(m);
+                }
+                return Makaleler;
+            }
+            catch
+            {
+                return null;
+            }
+            finally { con.Close(); }
         }
         public bool MakaleSil(int id)
         {
@@ -718,6 +759,31 @@ namespace DataAccessLayer
                 con.Close();
             }
         }
+
+        public bool YorumEkle(Yorum y)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO Yorumlar(Uye_ID, Makale_ID, Yonetici_ID, YorumTarih, YorumBegeni, YorumIcerik, Aktiflik) VALUES(@uye_ID, @makale_ID, @yonetici_ID, @yorumtarih, @yorumbegeni, @yorumicerik, @aktiflik)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@uye_ID", y.Uye_ID);
+                cmd.Parameters.AddWithValue("@Makale_ID", y.Makale_ID);
+                cmd.Parameters.AddWithValue("@Yonetici_ID", y.Yonetici_ID);
+                cmd.Parameters.AddWithValue("@YorumTarih", y.YorumTarih);
+                cmd.Parameters.AddWithValue("@YorumBegeni", y.YorumBegeni);
+                cmd.Parameters.AddWithValue("@YorumIcerik", y.YorumIcerik);
+                cmd.Parameters.AddWithValue("@Aktiflik", y.Aktiflik);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally { con.Close(); }
+        }
+
         #endregion
     }
 

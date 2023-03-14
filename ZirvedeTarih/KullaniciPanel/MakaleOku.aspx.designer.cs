@@ -15,67 +15,13 @@ namespace ZirvedeTarih.KullaniciPanel
     {
 
         /// <summary>
-        /// img_resim control.
+        /// rp_makaleler control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image img_resim;
-
-        /// <summary>
-        /// ltrl_baslik control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrl_baslik;
-
-        /// <summary>
-        /// ltrl_yazar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrl_yazar;
-
-        /// <summary>
-        /// ltrl_goruntulenmeSayisi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrl_goruntulenmeSayisi;
-
-        /// <summary>
-        /// ltrl_icerik control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrl_icerik;
-
-        /// <summary>
-        /// ltrl_kategori control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrl_kategori;
-
-        /// <summary>
-        /// ltrl_aciklama control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrl_aciklama;
+        protected global::System.Web.UI.WebControls.Repeater rp_makaleler;
 
         /// <summary>
         /// pnl_girisvar control.
@@ -96,13 +42,13 @@ namespace ZirvedeTarih.KullaniciPanel
         protected global::System.Web.UI.WebControls.TextBox tb_yorum;
 
         /// <summary>
-        /// lbtn_yorumYap control.
+        /// lbtn_yorumyap control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtn_yorumYap;
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_yorumyap;
 
         /// <summary>
         /// pnl_girisyok control.
