@@ -15,7 +15,9 @@ namespace ZirvedeTarih.KullaniciPanel
         {
             if (Request.QueryString.Count != 0)
             {
-                rp_makaleler.DataSource = dm.MakaleListele();
+                int id = Convert.ToInt32(Request.QueryString["mid"]);
+                dm.GoruntulemeArttir(id);
+                rp_makaleler.DataSource = dm.MakaleListele(id);
                 rp_makaleler.DataBind();
 
                 rp_yorumlar.DataSource = dm.YorumListele();
@@ -34,9 +36,7 @@ namespace ZirvedeTarih.KullaniciPanel
             }
             else
             {
-                int id = Convert.ToInt32(Request.QueryString["mid"]);
-                rp_makaleler.DataSource = dm.MakaleListele(id);
-                rp_makaleler.DataBind();
+                 Response.Redirect("Default.aspx");
             }
         }
 

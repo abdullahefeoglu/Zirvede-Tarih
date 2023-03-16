@@ -31,6 +31,7 @@
                     </div>
                     <hr />
                 </div>
+                <div style="clear: both"></div>
             </ItemTemplate>
         </asp:Repeater>
     </div>

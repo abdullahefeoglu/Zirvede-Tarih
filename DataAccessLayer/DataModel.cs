@@ -222,7 +222,7 @@ namespace DataAccessLayer
             try
             {
                 List<Makale> Makaleler = new List<Makale>();
-                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, K.kategoriAciklama, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.Kategori_ID = @kategori_ID AND M.Yayinda=@durum";
+                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, K.kategoriAciklama, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.Kategori_ID = @kategori_ID AND M.Yayında=@durum";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@durum", durum);
                 cmd.Parameters.AddWithValue("@kategori_ID", kid);
@@ -262,12 +262,12 @@ namespace DataAccessLayer
             }
         }
 
-        public List<Makale> MakaleListele( int mid)
+        public List<Makale> MakaleListele(int mid)
         {
             List<Makale> Makaleler = new List<Makale>();
             try
             {
-                cmd.CommandText = "SELECT SELECT M.ID, M.Kategori_ID, K.Isim, K.kategoriAciklama, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.ID=@id";
+                cmd.CommandText = "SELECT M.ID, M.Kategori_ID, K.Isim, K.kategoriAciklama, M.Yonetici_ID, Y.KullaniciAdi, M.Baslik, M.Ozet, M.Icerik, M.Resim, M.GoruntulenmeSayisi, M.EklemeTarihi, M.BeğeniSayisi, M.Yayında FROM Makaleler AS M JOIN Kategoriler AS K ON M.Kategori_ID = K.ID JOIN Yoneticiler AS Y ON M.Yonetici_ID = Y.ID WHERE M.ID=@id";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", mid);
 
@@ -421,12 +421,12 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "SELECT GoruntulemeSayisi FROM Makaleler WHERE ID = @İD";
+                cmd.CommandText = "SELECT GoruntulenmeSayisi FROM Makaleler WHERE ID = @id";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", mid);
                 con.Open();
                 int sayi = Convert.ToInt32(cmd.ExecuteScalar());
-                cmd.CommandText = "UPDATE Makaleler SET GoruntulemeSayisi = @gsayi WHERE ID = @id";
+                cmd.CommandText = "UPDATE Makaleler SET GoruntulenmeSayisi = @gsayi WHERE ID = @id";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", mid);
                 sayi = sayi + 1;
@@ -764,15 +764,13 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "INSERT INTO Yorumlar(Uye_ID, Makale_ID, Yonetici_ID, YorumTarih, YorumBegeni, YorumIcerik, Aktiflik) VALUES(@uye_ID, @makale_ID, @yonetici_ID, @yorumtarih, @yorumbegeni, @yorumicerik, @aktiflik)";
+                cmd.CommandText = "INSERT INTO Yorumlar(Uye_ID, Makale_ID, Yonetici_ID, YorumTarih, YorumBegeni, YorumIcerik, Aktiflik) VALUES(@uye_ID, @makale_ID, 1, @yorumtarih, @yorumbegeni, @yorumicerik, 0)";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@uye_ID", y.Uye_ID);
-                cmd.Parameters.AddWithValue("@Makale_ID", y.Makale_ID);
-                cmd.Parameters.AddWithValue("@Yonetici_ID", y.Yonetici_ID);
-                cmd.Parameters.AddWithValue("@YorumTarih", y.YorumTarih);
-                cmd.Parameters.AddWithValue("@YorumBegeni", y.YorumBegeni);
-                cmd.Parameters.AddWithValue("@YorumIcerik", y.YorumIcerik);
-                cmd.Parameters.AddWithValue("@Aktiflik", y.Aktiflik);
+                cmd.Parameters.AddWithValue("@makale_ID", y.Makale_ID);
+                cmd.Parameters.AddWithValue("@yorumtarih", y.YorumTarih);
+                cmd.Parameters.AddWithValue("@yorumbegeni", y.YorumBegeni);
+                cmd.Parameters.AddWithValue("@yorumicerik", y.YorumIcerik);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 return true;
@@ -783,7 +781,6 @@ namespace DataAccessLayer
             }
             finally { con.Close(); }
         }
-
         #endregion
     }
 
