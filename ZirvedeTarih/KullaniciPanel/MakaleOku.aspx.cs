@@ -20,7 +20,7 @@ namespace ZirvedeTarih.KullaniciPanel
                 rp_makaleler.DataSource = dm.MakaleListele(id);
                 rp_makaleler.DataBind();
 
-                rp_yorumlar.DataSource = dm.YorumListele();
+                rp_yorumlar.DataSource = dm.YorumListele(id);
                 rp_yorumlar.DataBind();
 
                 if (Session["uye"] != null)
@@ -48,7 +48,36 @@ namespace ZirvedeTarih.KullaniciPanel
 
         protected void lbtn_yorumyap_Click(object sender, EventArgs e)
         {
-            
+            Yorum y = new Yorum();  
+            Uye u = (Uye)Session["uye"];
+            y.Uye_ID = u.ID;
+            y.YorumIcerik = tb_yorum.Text;
+            if (!string.IsNullOrEmpty(tb_yorum.Text.Trim()))
+            {
+                try
+                {
+                    int id = Convert.ToInt32(Request.QueryString["mid"]);
+                    y.Makale_ID = id;
+                    y.YorumIcerik = tb_yorum.Text;
+                    y.YorumTarih = DateTime.Today;
+                    pnl_paylasildi.Visible = true;
+                    pnl_paylasilmadi.Visible = false;
+                    dm.YorumEkle(y);
+                    tb_yorum.Text = " ";
+                }
+                catch
+                {
+                    pnl_paylasildi.Visible = false;
+                    pnl_paylasilmadi.Visible = true;
+                    lbl_mesaj.Text = "Yorumun paylaşılırken bir hata oluştu";
+                }
+            }
+            else
+            {
+                pnl_paylasildi.Visible = false;
+                pnl_paylasilmadi.Visible = true;
+                lbl_mesaj.Text = "Yorum alanı doldurulmalıdır";
+            }
         }
     }
 }

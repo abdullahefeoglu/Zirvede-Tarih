@@ -1,14 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminPanel/AdminMaster.Master" AutoEventWireup="true" CodeBehind="OnaylananYorumlar.aspx.cs" Inherits="ZirvedeTarih.AdminPanel.OnaylananYorumlar" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="boxContainer">
+    <div class="boxContainer">
         <div class="begining">
             <h1>Yorumların Listesi</h1>
         </div>
         <br />
         <br />
-        <a href='YorumListele.aspx?yorumid=<%#Eval("ID") %>' class="bekleyen">Bekleyenler</a>
         <a href='OnaylananYorumlar.aspx?yorumid=<%#Eval("ID") %>' class="onay">Onaylananlar</a>
         <a href='ReddedilenYorumlar.aspx?yorumid=<%#Eval("ID") %>' class="red">Reddedilenler</a>
         <br />
@@ -43,6 +43,7 @@
                     <td><%#Eval("AktiflikStr") %></td>
                     <td>
                         <asp:LinkButton ID="lbtn_reddet" runat="server" CssClass="reddet" CommandArgument='<%#Eval("ID") %>' CommandName="reddet">Reddet</asp:LinkButton>
+                        <asp:LinkButton ID="lbtn_sil" runat="server" CssClass="yorumSil" CommandArgument='<%#Eval("ID") %>' CommandName="sil">Sil</asp:LinkButton>
                     </td>
                 </tr>
             </ItemTemplate>

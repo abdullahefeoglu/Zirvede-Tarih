@@ -9,7 +9,6 @@
         </div>
         <br />
         <br />
-        <a href='YorumListele.aspx?yorumid=<%#Eval("ID") %>' class="bekleyen">Bekleyenler</a>
         <a href='OnaylananYorumlar.aspx?yorumid=<%#Eval("ID") %>' class="onay">Onaylananlar</a>
         <a href='ReddedilenYorumlar.aspx?yorumid=<%#Eval("ID") %>' class="red">Reddedilenler</a>
         <br />
@@ -27,7 +26,6 @@
                             <th>Beğeni</th>
                             <th>İçerik</th>
                             <th>Aktiflik</th>
-                            <th>Seçenekler</th>
                         </tr>
                     </thead>
                     <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
@@ -42,10 +40,6 @@
                     <td><%#Eval("YorumBegeni") %></td>
                     <td><%#Eval("YorumIcerik") %></td>
                     <td><%#Eval("AktiflikStr") %></td>
-                    <td>
-                        <asp:LinkButton ID="lbtn_reddet" runat="server" CssClass="reddet" CommandArgument='<%#Eval("ID") %>' CommandName="reddet">Reddet</asp:LinkButton>
-                        <asp:LinkButton ID="lbtn_onayla" runat="server" CssClass="onayla" CommandArgument='<%#Eval("ID") %>' CommandName="onayla">Onayla</asp:LinkButton>
-                    </td>
                 </tr>
             </ItemTemplate>
         </asp:ListView>

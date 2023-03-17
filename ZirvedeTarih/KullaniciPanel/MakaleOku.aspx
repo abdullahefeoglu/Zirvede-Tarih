@@ -16,9 +16,7 @@
                     <div class="bilgi">
                         Yazar : <%#Eval("Yonetici") %> |
                     <img src="../ProjeResimleri/8665290_eye_vision_view_icon.png" style="width: 15px; height: 15px;" />
-                        <%#Eval("GoruntulemeSayisi") %> |
-                    <img src="../ProjeResimleri/8664909_heart_like_icon.png" style="width: 15px; height: 15px;" />
-                        <%#Eval("BegeniSayisi") %>
+                        <%#Eval("GoruntulemeSayisi") %>
                     </div>
                 </div>
                 <div class="icerik">
@@ -40,20 +38,33 @@
         <div class="yorumPanel">
             <h2>Yorumlar</h2>
             <asp:Panel ID="pnl_girisvar" runat="server" CssClass="girisvar">
-                <asp:TextBox ID="tb_yorum" runat="server" TextMode="MultiLine" CssClass="forminput"></asp:TextBox><br /><br />
+                <asp:TextBox ID="tb_yorum" runat="server" TextMode="MultiLine" CssClass="forminput"></asp:TextBox><br />
+                <br />
                 <asp:LinkButton ID="lbtn_yorumyap" runat="server" CssClass="formbutton" OnClick="lbtn_yorumyap_Click">Yorum Yap</asp:LinkButton>
             </asp:Panel>
             <asp:Panel ID="pnl_girisyok" runat="server" CssClass="girisyok">
-                Yorum Yapabilmek İçin Lütfen öncelikle <asp:LinkButton ID="lbtn_girisyonlendir" runat="server" OnClick="lbtn_girisyonlendir_Click">Giriş</asp:LinkButton> Yapınız.
+                Yorum Yapabilmek İçin Lütfen öncelikle
+                <asp:LinkButton ID="lbtn_girisyonlendir" runat="server" OnClick="lbtn_girisyonlendir_Click">Giriş</asp:LinkButton>
+                Yapınız.
+            </asp:Panel>
+            <asp:Panel ID="pnl_paylasildi" runat="server" Visible="false">
+                <label style="font-size: 18pt;">Yorumunuz Paylaşıldı</label>
+            </asp:Panel>
+            <asp:Panel ID="pnl_paylasilmadi" runat="server" CssClass="paylasilmadi" Visible="false">
+                <label style="font-size: 18pt;">
+                    <asp:Label ID="lbl_mesaj" runat="server"></asp:Label>
+                </label>
             </asp:Panel>
             <asp:Repeater ID="rp_yorumlar" runat="server">
                 <ItemTemplate>
                     <div class="yorum">
                         <strong>Üye : </strong>
-                        <label class="yorumUye"><%#Eval("Uye") %></label><br />
-                        <strong> Yorumu </strong><br />
+                        <label class="yorumUye"><%#Eval("Uye") %></label>&nbsp; | &nbsp; <%#Eval("YorumTarih") %><br />
+                        <strong>Yorumu </strong>
+                        <br />
                         <%# Eval("YorumIcerik") %>
                     </div>
+                    <hr />
                 </ItemTemplate>
             </asp:Repeater>
         </div>

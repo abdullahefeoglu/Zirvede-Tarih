@@ -16,6 +16,7 @@ namespace DataAccessLayer
         public int Yonetici_ID { get; set; }
         public string  Yonetici { get; set; }
         public DateTime YorumTarih { get; set; }
+        public DateTime YorumTarihStr { get; set; }
         public int YorumBegeni { get; set; }
         public string YorumIcerik { get; set; }
         public bool Aktiflik { get; set; }

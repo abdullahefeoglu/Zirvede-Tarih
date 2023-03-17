@@ -26,6 +26,14 @@ namespace ZirvedeTarih.AdminPanel
             }
             lv_yorumlar.DataSource = dm.YorumListele(1);
             lv_yorumlar.DataBind();
+
+            if (e.CommandName == "sil")
+            {
+                int id = Convert.ToInt32(e.CommandArgument);
+                dm.YorumSil(id);
+            }
+            lv_yorumlar.DataSource = dm.YorumListele(1);
+            lv_yorumlar.DataBind();
         }
     }
 }

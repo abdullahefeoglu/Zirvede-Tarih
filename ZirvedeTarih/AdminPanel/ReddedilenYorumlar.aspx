@@ -8,7 +8,6 @@
         </div>
         <br />
         <br />
-        <a href='YorumListele.aspx?yorumid=<%#Eval("ID") %>' class="bekleyen">Bekleyenler</a>
         <a href='OnaylananYorumlar.aspx?yorumid=<%#Eval("ID") %>' class="onay">Onaylananlar</a>
         <a href='ReddedilenYorumlar.aspx?yorumid=<%#Eval("ID") %>' class="red">Reddedilenler</a>
         <br />
@@ -43,6 +42,7 @@
                     <td><%#Eval("AktiflikStr") %></td>
                     <td>
                         <asp:LinkButton ID="lbtn_onayla" runat="server" CssClass="onayla" CommandArgument='<%#Eval("ID") %>' CommandName="onayla">Onayla</asp:LinkButton>
+                        <asp:LinkButton ID="lbtn_sil" runat="server" CssClass="yorumSil" CommandArgument='<%#Eval("ID") %>' CommandName="sil">Sil</asp:LinkButton>
                     </td>
                 </tr>
             </ItemTemplate>

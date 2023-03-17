@@ -686,6 +686,21 @@ namespace DataAccessLayer
             }
             finally { con.Close(); }
         }
+        public void YorumSil(int id)
+        {
+            try
+            {
+                cmd.CommandText = "DELETE FROM Yorumlar WHERE ID = @id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         public List<Yorum> YorumListele(int id)
         {
             List<Yorum> yorumlar = new List<Yorum>();
@@ -764,7 +779,7 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "INSERT INTO Yorumlar(Uye_ID, Makale_ID, Yonetici_ID, YorumTarih, YorumBegeni, YorumIcerik, Aktiflik) VALUES(@uye_ID, @makale_ID, 1, @yorumtarih, @yorumbegeni, @yorumicerik, 0)";
+                cmd.CommandText = "INSERT INTO Yorumlar(Uye_ID, Makale_ID, Yonetici_ID, YorumTarih, YorumBegeni, YorumIcerik, Aktiflik) VALUES(@uye_ID, @makale_ID, 1, @yorumtarih, @yorumbegeni, @yorumicerik, 1)";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@uye_ID", y.Uye_ID);
                 cmd.Parameters.AddWithValue("@makale_ID", y.Makale_ID);
