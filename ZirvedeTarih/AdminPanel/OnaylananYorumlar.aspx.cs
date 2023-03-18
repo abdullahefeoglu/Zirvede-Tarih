@@ -13,7 +13,7 @@ namespace ZirvedeTarih.AdminPanel
         DataModel dm = new DataModel();
         protected void Page_Load(object sender, EventArgs e)
         {
-            lv_yorumlar.DataSource = dm.YorumListele(1);
+            lv_yorumlar.DataSource = dm.YorumListele(true);
             lv_yorumlar.DataBind();
         }
 
@@ -24,7 +24,7 @@ namespace ZirvedeTarih.AdminPanel
                 int id = Convert.ToInt32(e.CommandArgument);
                 dm.YorumReddet(id);
             }
-            lv_yorumlar.DataSource = dm.YorumListele(1);
+            lv_yorumlar.DataSource = dm.YorumListele(true);
             lv_yorumlar.DataBind();
 
             if (e.CommandName == "sil")
@@ -32,7 +32,7 @@ namespace ZirvedeTarih.AdminPanel
                 int id = Convert.ToInt32(e.CommandArgument);
                 dm.YorumSil(id);
             }
-            lv_yorumlar.DataSource = dm.YorumListele(1);
+            lv_yorumlar.DataSource = dm.YorumListele(true);
             lv_yorumlar.DataBind();
         }
     }

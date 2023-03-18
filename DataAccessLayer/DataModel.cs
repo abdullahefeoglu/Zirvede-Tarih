@@ -706,9 +706,47 @@ namespace DataAccessLayer
             List<Yorum> yorumlar = new List<Yorum>();
             try
             {
-                cmd.CommandText = "SELECT Y.ID, Y.Uye_ID,U.KullaniciAdi, Y.Makale_ID, M.Baslik, Y.YorumIcerik, Y.YorumTarih, Y.YorumBegeni, Y.Aktiflik FROM Yorumlar AS Y JOIN Uyeler AS U ON Y.Uye_ID = U.ID JOIN Makaleler AS M ON Y.Makale_ID = M.ID WHERE Y.Aktiflik = @aktiflik AND Y.Makale_ID = @mid";
+                cmd.CommandText = "SELECT Y.ID, Y.Uye_ID,U.KullaniciAdi, Y.Makale_ID, M.Baslik, Y.YorumIcerik, Y.YorumTarih, Y.YorumBegeni, Y.Aktiflik FROM Yorumlar AS Y JOIN Uyeler AS U ON Y.Uye_ID = U.ID JOIN Makaleler AS M ON Y.Makale_ID = M.ID WHERE Y.Makale_ID = @mid";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@mid", id);
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Yorum y = new Yorum();
+                    y.ID = reader.GetInt32(0);
+                    y.Uye_ID = reader.GetInt32(1);
+                    y.Uye = reader.GetString(2);
+                    y.Makale_ID = reader.GetInt32(3);
+                    y.Makale = reader.GetString(4);
+                    y.YorumIcerik = reader.GetString(5);
+                    y.YorumTarih = reader.GetDateTime(6);
+                    y.YorumBegeni = reader.GetInt32(7);
+                    y.Aktiflik = reader.GetBoolean(8);
+                    y.AktiflikStr = reader.GetBoolean(8) ? "<label style='color:green'>Aktif</label>" : "<label style='color:red'>Pasif</label>";
+                    yorumlar.Add(y);
+                }
+                return yorumlar;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public List<Yorum> YorumListele(bool aktiflik)
+        {
+            List<Yorum> yorumlar = new List<Yorum>();
+            try
+            {
+                cmd.CommandText = "SELECT Y.ID, Y.Uye_ID,U.KullaniciAdi, Y.Makale_ID, M.Baslik, Y.YorumIcerik, Y.YorumTarih, Y.YorumBegeni, Y.Aktiflik FROM Yorumlar AS Y JOIN Uyeler AS U ON Y.Uye_ID = U.ID JOIN Makaleler AS M ON Y.Makale_ID = M.ID WHERE Y.Aktiflik = @aktiflik";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@aktiflik", aktiflik);
                 con.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();

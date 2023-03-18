@@ -36,7 +36,7 @@
             </ItemTemplate>
         </asp:Repeater>
         <div class="yorumPanel">
-            <h2>Yorumlar</h2>
+            <h2 class="yorumbaslik">Yorumlar</h2>
             <asp:Panel ID="pnl_girisvar" runat="server" CssClass="girisvar">
                 <asp:TextBox ID="tb_yorum" runat="server" TextMode="MultiLine" CssClass="forminput"></asp:TextBox><br />
                 <br />
@@ -47,24 +47,25 @@
                 <asp:LinkButton ID="lbtn_girisyonlendir" runat="server" OnClick="lbtn_girisyonlendir_Click">Giriş</asp:LinkButton>
                 Yapınız.
             </asp:Panel>
-            <asp:Panel ID="pnl_paylasildi" runat="server" Visible="false">
-                <label style="font-size: 18pt;">Yorumunuz Paylaşıldı</label>
+            <asp:Panel ID="pnl_paylasildi" runat="server" CssClass="paylasildi" Visible="false">
+                <label>Yorumunuz Paylaşıldı</label>
             </asp:Panel>
             <asp:Panel ID="pnl_paylasilmadi" runat="server" CssClass="paylasilmadi" Visible="false">
-                <label style="font-size: 18pt;">
+                <label>
                     <asp:Label ID="lbl_mesaj" runat="server"></asp:Label>
                 </label>
             </asp:Panel>
             <asp:Repeater ID="rp_yorumlar" runat="server">
                 <ItemTemplate>
                     <div class="yorum">
-                        <strong>Üye : </strong>
-                        <label class="yorumUye"><%#Eval("Uye") %></label>&nbsp; | &nbsp; <%#Eval("YorumTarih") %><br />
+                        <div class="yorumuye">
+                            <strong>Üye : </strong>
+                            <label ><%#Eval("Uye") %></label>&nbsp; | &nbsp; <%#Eval("YorumTarih") %><br />
+                        </div>
                         <strong>Yorumu </strong>
                         <br />
                         <%# Eval("YorumIcerik") %>
                     </div>
-                    <hr />
                 </ItemTemplate>
             </asp:Repeater>
         </div>
