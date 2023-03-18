@@ -706,9 +706,9 @@ namespace DataAccessLayer
             List<Yorum> yorumlar = new List<Yorum>();
             try
             {
-                cmd.CommandText = "SELECT Y.ID, Y.Uye_ID,U.KullaniciAdi, Y.Makale_ID, M.Baslik, Y.YorumIcerik, Y.YorumTarih, Y.YorumBegeni, Y.Aktiflik FROM Yorumlar AS Y JOIN Uyeler AS U ON Y.Uye_ID = U.ID JOIN Makaleler AS M ON Y.Makale_ID = M.ID WHERE Y.Aktiflik = @aktiflik";
+                cmd.CommandText = "SELECT Y.ID, Y.Uye_ID,U.KullaniciAdi, Y.Makale_ID, M.Baslik, Y.YorumIcerik, Y.YorumTarih, Y.YorumBegeni, Y.Aktiflik FROM Yorumlar AS Y JOIN Uyeler AS U ON Y.Uye_ID = U.ID JOIN Makaleler AS M ON Y.Makale_ID = M.ID WHERE Y.Aktiflik = @aktiflik AND Y.Makale_ID = @mid";
                 cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@aktiflik", id);
+                cmd.Parameters.AddWithValue("@mid", id);
                 con.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -738,6 +738,7 @@ namespace DataAccessLayer
                 con.Close();
             }
         }
+
         public List<Yorum> YorumListele()
         {
             List<Yorum> yorumlar = new List<Yorum>();
